@@ -7,13 +7,14 @@
     "48": "icons/icon_48.png",
     "128": "icons/icon_128.png"
   },
-  "browser_action": {
+  "page_action": {
     "default_title": "ufcg-pro",
     "default_popup": "popup/popup.html"
   },
   "background": {
-    "scripts": [
-      "background.js"
-    ]
-  }
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "web_accessible_resources": ["util.js", "home.js", "*.js", "*.css"],
+  "permissions": ["https://*/*", "http://*/*", "tabs"]
 }
