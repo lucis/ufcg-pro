@@ -1,7 +1,13 @@
 <template>
   <div class="flex flex-column items-center br4 bgb pv4">
     <h1 class="mb2 mt0">Chamada{{ finalizada ? ' finalizada' : ' interativa' }}</h1>
-    <div class="f4">
+    <div v-if="finalizada" class="flex flex-row justify-center">
+    
+        <button v-on:click="recomecar()" v-bind:disabled="alunoAtual === 0">
+          Recomeçar
+        </button>
+    </div>
+    <div class="black-60 f4 pv2 ph3 flex justify-between" style="width: 50vw" v-if="!finalizada">
       <div class="di" v-if="!finalizada">
         <span>Aula: </span>
         <select v-model="aulaSelecionada">
@@ -9,20 +15,25 @@
             {{ aulita.dia }}
           </option>
         </select>
-        <span> | Aluno {{ alunoAtual + 1 }} de {{ alunos.length }}</span>
       </div>
-      <button v-on:click="recomecar()" v-bind:disabled="alunoAtual === 0">
-        Recomeçar
-      </button>
-    </div>
-    <div class="bg-white-80 black-40 f5 pa1 ph3" v-if="ultimaAcao && !finalizaca">
-      <b>Última Ação:</b> 
-      <span class="b">
-        {{ ultimaAcao.acao }}
-      </span>
-      <span>
-      em {{ ultimaAcao.nome }}
-      </span>
+      <div class="di">
+        <span>Aluno <b>{{ alunoAtual + 1 }}</b> de <b>{{ alunos.length }}</b></span>
+      </div>
+      <div class="di">
+        <button v-on:click="recomecar()" v-bind:disabled="alunoAtual === 0">
+          Recomeçar
+        </button>
+      </div>
+      <div class="di w-50 text-center" >
+        <div v-if="ultimaAcao" class="di">
+          <b>Última Ação:</b> 
+          {{ ultimaAcao.acao }} em {{ ultimaAcao.nome.split(' ')[0] }}
+          </span>
+        </div>
+        <div v-if="!ultimaAcao" class="di">
+          Nenhuma ação realizada
+        </div>
+      </div>
     </div>
     <div style="width: 40vw" class="flex"> 
     <span v-if="!finalizada" class="f1 mr3">
@@ -180,8 +191,16 @@ export default {
   methods: {
     recomecar() {
       this.alunoAtual = 0
+      this.ultimaAcao = null
     },
     reduce(action) {
+      const active = document.activeElement
+      if (active.nodeName === 'INPUT'){
+        return
+      }
+      if (active.nodeName !== 'BODY'){
+        active.blur()
+      }
       if (this.finalizada) {
         return
       }
