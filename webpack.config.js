@@ -14,7 +14,8 @@ const config = {
     background: './background.js',
     'popup/popup': './popup/popup.js',
     home: './home.js',
-    'injectors/frequencia': './injectors/frequencia.js'
+    'injectors/frequencia': './injectors/frequencia.js',
+    'injectors/notas': './injectors/notas.js'
   },
   output: {
     path: __dirname + '/dist',

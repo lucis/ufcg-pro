@@ -15,3 +15,4 @@ const define = lib => {
 if (!window.ufcg) {
   define(window);
 }
+

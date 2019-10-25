@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import Chamada from '../components/Chamada'
+import PreencheNotas from '../components/PreencheNotas'
 
 global.browser = require('webextension-polyfill')
 Vue.prototype.$browser = global.browser
@@ -12,7 +12,8 @@ Vue.config.devtools = process.env.NODE_ENV === 'development'
 /* eslint-disable no-new */
 const app = new Vue({
   el: '#inject-vue',
-  render: h => h(Chamada)
+  render: h => h(PreencheNotas)
 })
 
 window.__VUE_DEVTOOLS_GLOBAL_HOOK__.Vue = app.constructor
+
