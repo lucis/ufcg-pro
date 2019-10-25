@@ -1,10 +1,10 @@
 global.browser = require('webextension-polyfill')
 
-const injectScript = (path, tabId) =>
+const injectScript = (path, tabId, external) =>
   browser.tabs.executeScript(tabId, {
     code: `if(![...document.querySelectorAll('script')].map(el => el.src).includes('${chrome.extension.getURL(
       path
-    )}')) { var sc = document.body.appendChild(document.createElement('script')); sc.charset="utf-8"; sc.src='${chrome.extension.getURL(path)}';}`
+    )}')) { var sc = document.body.appendChild(document.createElement('script')); sc.charset="utf-8"; sc.src='${external ? path : chrome.extension.getURL(path)}';}`
   })
 
 const injectCSS = (path, tabId) =>
@@ -28,7 +28,7 @@ browser.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
 
     injectCSS('ufcg_tachyons.css')
     injectScript('util.js')
-    console.log('Firing this')
+    injectScript('https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.1.0/papaparse.min.js', tabId, true)
     // injectScript('popup/popup.js')
 
     //TESTES
