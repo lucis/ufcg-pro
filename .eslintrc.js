@@ -25,6 +25,7 @@ module.exports = {
   ],
   // add your custom rules here
   rules: {
+    "camelcase": [2, { "properties": "never" }]
     "semi": ["error", "never"],
     // allow async-await
     'generator-star-spacing': 'off',

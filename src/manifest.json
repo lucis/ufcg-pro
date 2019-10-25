@@ -15,6 +15,6 @@
     "scripts": ["background.js"],
     "persistent": false
   },
-  "web_accessible_resources": ["util.js", "home.js", "*.js", "*.css"],
+  "web_accessible_resources": ["*.js", "*.css"],
   "permissions": ["https://*/*", "http://*/*", "tabs"]
 }
