@@ -26,27 +26,29 @@ const getCurrentPage = url => {
 
 const PAGES = {
   FREQUENCIA: 'frequencia',
-  NOTAS: 'notas'
+  NOTAS: 'notas',
+  OFERTADAS: 'ofertadas'
 }
 
 const injectorsMap = {
   [PAGES.FREQUENCIA]: 'injectors/frequencia.js',
-  [PAGES.NOTAS]: 'injectors/notas.js'
+  [PAGES.NOTAS]: 'injectors/notas.js',
+  [PAGES.OFERTADAS]: 'injectors/ofertadas.js'
 }
 
 const WHITELIST = ['localhost', 'ufcgexamples', 'pre.ufcg.edu.br:8443/ControleAcademicoOnline/']
 browser.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
   const { url } = tab
-  const shouldAct = WHITELIST.reduce((acc, cur) => acc || url.includes(cur), false) 
+  const shouldAct = WHITELIST.reduce((acc, cur) => acc || url.includes(cur), false)
   if (!shouldAct) return
-    chrome.pageAction.show(tabId)
+  chrome.pageAction.show(tabId)
 
-    injectCSS('ufcg_tachyons.css')
-    injectScript('util.js')
-    injectScript('https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.1.0/papaparse.min.js', tabId, true)
+  injectCSS('ufcg_tachyons.css')
+  injectScript('util.js')
+  injectScript('https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.1.0/papaparse.min.js', tabId, true)
+  injectScript('https://cdn.jsdelivr.net/gh/nwcell/ics.js@0.2.0/ics.deps.min.js', tabId, true)
 
-    const page = getCurrentPage(url)
-    const shouldInject = injectorsMap[page]
-    shouldInject && injectScript(shouldInject)
-    
+  const page = getCurrentPage(url)
+  const shouldInject = injectorsMap[page]
+  shouldInject && injectScript(shouldInject)
 })
