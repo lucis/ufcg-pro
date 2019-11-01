@@ -33,9 +33,7 @@ const getLinhaAluno = (row, notas) => {
 const extrairNotas = csv => {
   const { data, errors } = Papa.parse(csv, { header: true })
   if (errors.length) {
-
   }
-  console.log({data})
   return data
 }
 
@@ -75,7 +73,7 @@ export default {
       const SUBS = 'SUBS'
 
       const table = document.querySelector('form table')
-      const notas = extrairNotas(this.content) 
+      const notas = extrairNotas(this.content)
       console.log(notas)
       const erros = []
       const it = a => a.innerText
@@ -110,7 +108,7 @@ export default {
           } catch (e) {
             nomeNota += i + 1
           }
-          if (input.id[0] === 'f'){
+          if (input.id[0] === 'f') {
             nomeNota = 'final'
           }
           input.value = entry[nomeNota]
