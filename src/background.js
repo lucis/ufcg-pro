@@ -21,19 +21,21 @@ const getCurrentPage = url => {
   if (!url || !url.split('?')) return null
   const query = url.split('?').pop()
   const params = new URLSearchParams(query)
-  return params.get('command')
+  return ('' + params.get('command')).replace('#', '')
 }
 
 const PAGES = {
   FREQUENCIA: 'frequencia',
   NOTAS: 'notas',
-  OFERTADAS: 'ofertadas'
+  OFERTADAS: 'ofertadas',
+  HISTORICO: 'AlunoHistorico'
 }
 
 const injectorsMap = {
   [PAGES.FREQUENCIA]: 'injectors/frequencia.js',
   [PAGES.NOTAS]: 'injectors/notas.js',
-  [PAGES.OFERTADAS]: 'injectors/ofertadas.js'
+  [PAGES.OFERTADAS]: 'injectors/ofertadas.js',
+  [PAGES.HISTORICO]: 'injectors/historico.js'
 }
 
 const WHITELIST = ['localhost', 'ufcgexamples', 'pre.ufcg.edu.br:8443/ControleAcademicoOnline/']
