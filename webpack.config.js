@@ -18,7 +18,8 @@ const config = {
     'injectors/notas': './injectors/notas.js',
     'injectors/historico': './injectors/historico.js',
     'injectors/ofertadas': './injectors/ofertadas.js',
-    'injectors/home': './injectors/home.js'
+    'injectors/home': './injectors/home.js',
+    'injectors/faltas': './injectors/faltas.js'
   },
   output: {
     path: __dirname + '/dist',
