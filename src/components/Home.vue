@@ -2,7 +2,10 @@
   <div>
     <div class="flex justify-center mv3">
       <div class="bgb br4 brb ph4 pv2">
-        <span class="alert-info">Você está utilizando o <b>UFCGPro</b>. Veja todas as <a href="#">funcionalidades</a>.</span>
+        <span class="alert-info"
+          >Você está utilizando o <b>UFCGPro</b>. Veja todas as
+          <a target="_blank" href="https://gist.github.com/luciannojunior/65d8743fb9a5759de932861a6bb5b781">funcionalidades</a>.</span
+        >
       </div>
     </div>
     <div class="flex justify-center items-center">
