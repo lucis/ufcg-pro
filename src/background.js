@@ -15,10 +15,11 @@ const injectCSS = (path, tabId) =>
       path
     )}'; document.head.appendChild(link);}`
   })
-const getCurrentPage = url => {
+const getCurrentPage = (url = '') => {
+  const slots = url.split('?')
   if (url.includes('notas')) return PAGES.NOTAS
   if (url.includes('frequencia')) return PAGES.FREQUENCIA
-  if (!url || !url.split('?')) return null
+  if (slots.length === 1) return PAGES.HOME
   const query = url.split('?').pop()
   const params = new URLSearchParams(query)
   return ('' + params.get('command')).replace('#', '') || PAGES.HOME
@@ -29,7 +30,8 @@ const PAGES = {
   NOTAS: 'notas',
   OFERTADAS: 'AlunoDisciplinasOfertadas',
   HISTORICO: 'AlunoHistorico',
-  HOME: 'Home'
+  HOME: 'Home',
+  FALTAS: 'AlunoTurmaFrequencia'
 }
 
 const injectorsMap = {
@@ -37,7 +39,8 @@ const injectorsMap = {
   [PAGES.NOTAS]: 'injectors/notas.js',
   [PAGES.OFERTADAS]: 'injectors/ofertadas.js',
   [PAGES.HISTORICO]: 'injectors/historico.js',
-  [PAGES.HOME]: 'injectors/home.js'
+  [PAGES.HOME]: 'injectors/home.js',
+  [PAGES.FALTAS]: 'injectors/faltas.js'
 }
 
 const WHITELIST = ['localhost', 'ufcgexamples', 'pre.ufcg.edu.br:8443/ControleAcademicoOnline/']
@@ -53,6 +56,7 @@ browser.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
   injectScript('https://cdn.jsdelivr.net/gh/nwcell/ics.js@0.2.0/ics.deps.min.js', tabId, true)
 
   const page = getCurrentPage(url)
+  console.log(page)
   const shouldInject = injectorsMap[page]
   shouldInject && injectScript(shouldInject)
 })
