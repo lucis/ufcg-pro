@@ -24,7 +24,8 @@ const montarCheckboxes = (ref = document) => {
           detail: {
             checked,
             codigo: tr.children[1].innerText.trim(),
-            nome: tr.children[2].innerText.trim()
+            nome: tr.children[2].innerText.trim(),
+            horario: tr.children[3].innerText.trim()
           }
         })
       )
