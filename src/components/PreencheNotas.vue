@@ -1,15 +1,23 @@
 <template>
   <div class="preenchedor">
-    <div class="flex flex-row items-center justify-end bgb ph3 pa2">
-      <div class="ph2 flex flex-column items-end">
-        <label for="file" class="b">Importe notas a partir de um CSV:</label>
-        <a href="#" class="black-60" v-on:click="baixarModelo()">(baixe um modelo)</a>
+    <div class="flex flex-row items-center bgb ph3 pa2 br4">
+      <div class="w-60 flex flex-row items-center">
+        <div class="ph2 flex flex-column items-end">
+          <label for="file" class="b">Importe notas a partir de um CSV:</label>
+          <a href="#" class="black-60" v-on:click="baixarModelo()">(baixe um modelo)</a>
+        </div>
+        <div>
+          <input type="file" id="file" v-bind:disabled="!!file" ref="file" v-on:change="handleFileUpload()" accept=".csv" />
+        </div>
+        <div>
+          <button v-bind:disabled="!file" v-on:click="preencher()" class="btn btn-primary">Prencher</button>
+        </div>
       </div>
-      <div>
-        <input type="file" id="file" v-bind:disabled="!!file" ref="file" v-on:change="handleFileUpload()" accept=".csv" />
-      </div>
-      <div>
-        <button v-bind:disabled="!file" v-on:click="preencher()" class="btn btn-primary">Prencher</button>
+      <div class="w-40 pt2">
+        <p class="f4">
+          Você deve enviar um arquivo <b>.csv</b> que tenham os cabeçalhos "matricula" ou "nome", para identificar os alunos e, para as notas: "nota1", "nota2", "nota3", ... e
+          "final" (não necessariamente todas). Você pode <a href="#" v-on:click="baixarModelo()">baixar um .csv</a> modelo com os alunos dessa turma.
+        </p>
       </div>
     </div>
   </div>
