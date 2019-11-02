@@ -6,7 +6,7 @@
       </div>
     </div>
     <div class="flex justify-center items-center">
-      <span class="text-center f3 b">Ocorrendo agora: <span class="normal">INTERCONEXÃO DE REDES</span></span>
+      <span class="text-center f3 b" v-html="aulaAtual"></span>
     </div>
     <div class="flex justify-between items-center">
       <h3>Horário</h3>
@@ -36,13 +36,62 @@
 
 <script>
 import BaixaHorario from './BaixaHorario'
+const extraiCadeiras = table => {
+  return [...table.querySelectorAll('tbody tr')].map(tr => {
+    return {
+      cadeira: tr.children[2].innerText,
+      horario: tr.children[4].innerText
+        .split('\n')
+        .filter(Boolean)
+        .map(entry => {
+          const [dia, slot, sala] = entry.split(' ')
+          return { dia, slot, sala: sala.replace(')', '').replace('(', '') }
+        })
+        .reduce((acc, { dia, ...rest }) => ({ ...acc, [dia]: rest }), {})
+    }
+  })
+}
+
+const getAulaProxima = (table, hoje = new Date()) => {
+  const cadeiras = extraiCadeiras(table)
+  const dia = hoje.getDay() + 1
+  const hora = hoje.getHours()
+  const aulasDeHoje = cadeiras.filter(({ horario }) => horario[dia])
+  if (!aulasDeHoje.length) return null
+  return aulasDeHoje.reduce((acc, { cadeira, horario }) => {
+    const { slot, sala } = horario[dia]
+    const [inicio, fim] = slot
+      .split('-')
+      .map(hora => hora.slice(0, 2))
+      .map(hora => parseInt(hora))
+    const maisCedo = acc ? acc.inicio : 100000
+    if (hora >= fim || maisCedo < inicio) return acc
+    if (hora >= inicio && hora < fim) return { cadeira, sala, inicio, agora: true }
+    return { cadeira, sala, inicio }
+  }, null)
+}
 
 export default {
   name: 'Home',
   data() {
     return {
       horario: 'Carregando...',
-      tableTurmas: null
+      tableTurmas: null,
+      aulaAtual: ''
+    }
+  },
+  methods: {
+    calcularAulaAtual() {
+      const aula = getAulaProxima(this.tableTurmas)
+      if (!aula) {
+        this.aulaAtual = 'Sem aulas por hoje :D'
+      } else {
+        let label = ''
+        const { inicio, cadeira, sala } = aula
+        label += agora ? 'Ocorrendo agora: ' : `Próxima aula (${inicio}:00): `
+        label += `<span class="normal">${cadeira} - ${sala}</span>`
+        this.aulaAtual = label
+      }
     }
   },
   mounted() {
@@ -50,7 +99,12 @@ export default {
       const [turmas, horario] = doc.querySelectorAll('table')
       this.horario = horario.innerHTML
       this.tableTurmas = turmas
+      this.calcularAulaAtual()
     })
+
+    setInterval(() => {
+      this.calcularAulaAtual()
+    }, 50000)
   },
   components: {
     BaixaHorario
