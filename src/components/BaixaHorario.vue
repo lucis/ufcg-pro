@@ -107,9 +107,15 @@ export default {
     if (this.table) {
       this.tableTurmas = this.table
     } else {
-      getTableTurmas().then(table => {
+      const table = document.querySelector('table')
+      const ths = table && table.querySelectorAll('th')
+      if (!table || !ths || ths[2].innerText !== 'Disciplina') {
         this.tableTurmas = table
-      })
+      } else {
+        getTableTurmas().then(table => {
+          this.tableTurmas = table
+        })
+      }
     }
   }
 }
