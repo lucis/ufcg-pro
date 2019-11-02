@@ -51,6 +51,19 @@ const define = lib => {
     document.body.appendChild(link)
     link.click()
   }
+
+  const hoje = new Date()
+
+  lib.ufcg.hoje = {
+    periodo: hoje.getMonth() > 6 ? 2 : 1,
+    ano: hoje.getFullYear()
+  }
+
+  lib.ufcg.getPaginaHorario = async () => {
+    const { periodo, ano } = lib.ufcg.hoje
+    // TODO: Checar se é professor e mudar a URL
+    return await lib.ufcg.fetchAndParse(`/ControleAcademicoOnline/Controlador?command=AlunoHorarioConfirmar&ano=${ano}&periodo=${periodo}`)
+  }
 }
 if (!window.ufcg) {
   define(window)

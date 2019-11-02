@@ -5,10 +5,13 @@
         <span class="alert-info">Você está utilizando o <b>UFCGPro</b>. Veja todas as <a href="#">funcionalidades</a>.</span>
       </div>
     </div>
-    <div class="flex justify-center">
+    <div class="flex justify-center items-center">
       <span class="text-center f3 b">Ocorrendo agora: <span class="normal">INTERCONEXÃO DE REDES</span></span>
     </div>
-    <h3>Horário</h3>
+    <div class="flex justify-between items-center">
+      <h3>Horário</h3>
+      <BaixaHorario :table="tableTurmas" />
+    </div>
     <table v-html="horario" class="table table-striped table-condensed" style="border: 1px solid rgb(221, 221, 221);"></table>
     <div>
       <h3>Links úteis</h3>
@@ -32,30 +35,25 @@
 </template>
 
 <script>
-const getHorario = async () => {
-  const hoje = new Date()
-  const ano = hoje.getFullYear()
-  const periodo = hoje.getMonth() > 6 ? 2 : 1
-  const doc = await ufcg.fetchAndParse(`/ControleAcademicoOnline/Controlador?command=AlunoHorarioConfirmar&ano=${ano}&periodo=${periodo}`)
-  return doc.querySelectorAll('table')[1].innerHTML
-}
+import BaixaHorario from './BaixaHorario'
+
 export default {
   name: 'Home',
   data() {
     return {
-      horario: 'Carregando...'
-    }
-  },
-  methods: {
-    download() {
-      ufcg.downloadCsv(this.csvContent, 'UFCG_historico.csv')
+      horario: 'Carregando...',
+      tableTurmas: null
     }
   },
   mounted() {
-    getHorario().then(html => {
-      console.log(html)
-      this.horario = html
+    ufcg.getPaginaHorario().then(doc => {
+      const [turmas, horario] = doc.querySelectorAll('table')
+      this.horario = horario.innerHTML
+      this.tableTurmas = turmas
     })
+  },
+  components: {
+    BaixaHorario
   }
 }
 </script>
