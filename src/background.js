@@ -27,7 +27,7 @@ const getCurrentPage = url => {
 const PAGES = {
   FREQUENCIA: 'frequencia',
   NOTAS: 'notas',
-  OFERTADAS: 'ofertadas',
+  OFERTADAS: 'AlunoDisciplinasOfertadas',
   HISTORICO: 'AlunoHistorico'
 }
 
