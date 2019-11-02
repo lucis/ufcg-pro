@@ -19,7 +19,8 @@ const config = {
     'injectors/historico': './injectors/historico.js',
     'injectors/ofertadas': './injectors/ofertadas.js',
     'injectors/home': './injectors/home.js',
-    'injectors/faltas': './injectors/faltas.js'
+    'injectors/faltas': './injectors/faltas.js',
+    'injectors/curso': './injectors/curso.js'
   },
   output: {
     path: __dirname + '/dist',
