@@ -2,16 +2,16 @@ global.browser = require('webextension-polyfill')
 
 const injectScript = (path, tabId, external) =>
   browser.tabs.executeScript(tabId, {
-    code: `if(![...document.querySelectorAll('script')].map(el => el.src).includes('${chrome.extension.getURL(
+    code: `if(![...document.querySelectorAll('script')].map(el => el.src).includes('${browser.extension.getURL(
       path
-    )}')) { var sc = document.body.appendChild(document.createElement('script')); sc.charset="utf-8"; sc.src='${external ? path : chrome.extension.getURL(path)}';}`
+    )}')) { var sc = document.body.appendChild(document.createElement('script')); sc.charset="utf-8"; sc.src='${external ? path : browser.extension.getURL(path)}';}`
   })
 
 const injectCSS = (path, tabId) =>
   browser.tabs.executeScript(tabId, {
-    code: `if(![...document.querySelectorAll('link')].map(el => el.href).includes('${chrome.extension.getURL(
+    code: `if(![...document.querySelectorAll('link')].map(el => el.href).includes('${browser.extension.getURL(
       path
-    )}')) {const link = document.createElement('link'); link.rel = 'stylesheet'; link.type = 'text/css'; link.href = '${chrome.extension.getURL(
+    )}')) {const link = document.createElement('link'); link.rel = 'stylesheet'; link.type = 'text/css'; link.href = '${browser.extension.getURL(
       path
     )}'; document.head.appendChild(link);}`
   })
@@ -50,9 +50,8 @@ const injectorsMap = {
 const WHITELIST = ['localhost', 'ufcgexamples', 'pre.ufcg.edu.br:8443/ControleAcademicoOnline/']
 browser.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
   const { url } = tab
-  const shouldAct = WHITELIST.reduce((acc, cur) => acc || url.includes(cur), false)
+  const shouldAct = url && WHITELIST.some(allowed => url.includes(allowed))
   if (!shouldAct) return
-  chrome.pageAction.show(tabId)
 
   injectCSS('ufcg_tachyons.css')
   injectScript('util.js')

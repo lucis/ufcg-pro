@@ -88,7 +88,7 @@ export default {
       const dataTeste = new Date()
       const aula = getAulaProxima(this.tableTurmas, dataTeste)
       if (!aula) {
-        this.aulaAtual = 'Sem aulas por hoje :D'
+        this.aulaAtual = 'Sem aulas por hoje'
       } else {
         let label = ''
         const { inicio, cadeira, sala, agora } = aula
