@@ -42,8 +42,8 @@ const getTableTurmas = async () => {
 const getTurmas = ref => {
   return [...ref.querySelectorAll('tbody tr')].map(tr => {
     return {
-      cadeira: tr.children[1].innerText.split('-')[1].trim(),
-      horario: tr.children[4].innerText
+      cadeira: tr.children[ufcg.professor ? 1 : 2].innerText,
+      horario: tr.children[ufcg.professor ? 3 : 4].innerText
         .split('\n')
         .filter(Boolean)
         .map(entry => {
@@ -109,9 +109,11 @@ export default {
     } else {
       const table = document.querySelector('table')
       const ths = table && table.querySelectorAll('th')
-      if (!table || !ths || ths[2].innerText !== 'Disciplina') {
+      const temTabela = ths && [...ths].some(th => th.innerText.includes('Disciplina'))
+      if (temTabela) {
         this.tableTurmas = table
       } else {
+        // TODO: Não funciona pra professores (não sei se precisa)
         getTableTurmas().then(table => {
           this.tableTurmas = table
         })
