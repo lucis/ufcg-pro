@@ -14,29 +14,34 @@
       <BaixaHorario :table="tableTurmas" />
     </div>
     <table v-html="horario" class="table table-striped table-condensed" style="border: 1px solid rgb(221, 221, 221);"></table>
-    <div>
-      <h3>Links úteis</h3>
-      <ul>
-        <li>
-          <a target="_blank" href="http://prefeitura.ufcg.edu.br/mapas-dos-campi">Mapas da UFCG</a>
-        </li>
-        <li>
-          <a target="_blank" href="https://sei.ufcg.edu.br/sei/controlador_externo.php?acao=usuario_externo_logar&id_orgao_acesso_externo=0">
-            SEI - Sistema de Protocolos
-          </a>
-        </li>
-        <li>
-          <a target="_blank" href="http://analytics.lsd.ufcg.edu.br/cursosufcg/#/">
-            Cursos UFCG - Consulte as grades curriculares e planeje sua graduação
-          </a>
-        </li>
-      </ul>
+    <div class="flex justify-between">
+      <div class="w-50">
+        <h3>Links úteis</h3>
+        <ul>
+          <li>
+            <a target="_blank" href="http://prefeitura.ufcg.edu.br/mapas-dos-campi">Mapas da UFCG</a>
+          </li>
+          <li>
+            <a target="_blank" href="https://sei.ufcg.edu.br/sei/controlador_externo.php?acao=usuario_externo_logar&id_orgao_acesso_externo=0">
+              SEI - Sistema de Protocolos
+            </a>
+          </li>
+          <li>
+            <a target="_blank" href="http://analytics.lsd.ufcg.edu.br/cursosufcg/#/">
+              Cursos UFCG - Consulte as grades curriculares e planeje sua graduação
+            </a>
+          </li>
+        </ul>
+      </div>
+      <Resumo v-if="!!tableTurmas" :table="tableTurmas" />
     </div>
   </div>
 </template>
 
 <script>
 import BaixaHorario from './BaixaHorario'
+import Resumo from './Resumo.vue'
+
 const getNomeCadeira = tr => (ufcg.professor ? tr.children[ufcg.professor ? 1 : 2].innerText : tr.children[1].innerText.split('-')[1].trim())
 
 const extraiCadeiras = table => {
@@ -111,7 +116,8 @@ export default {
     }, 50000)
   },
   components: {
-    BaixaHorario
+    BaixaHorario,
+    Resumo
   }
 }
 </script>
