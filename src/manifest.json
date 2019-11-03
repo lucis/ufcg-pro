@@ -1,5 +1,5 @@
 {
-  "name": "ufcg-pro",
+  "name": "UFCGPro",
   "description": "Uma ferramenta para os usuários do Controle Acadêmico da UFCG - Universidade Federal de Campina Grande",
   "version": null,
   "manifest_version": 2,
@@ -16,5 +16,5 @@
     "persistent": false
   },
   "web_accessible_resources": ["*.js", "*.css"],
-  "permissions": ["https://*/*", "http://*/*", "tabs"]
+  "permissions": ["https://ufcgexamples.lcnjnr.now.sh/*", "https://pre.ufcg.edu.br:8443/*"]
 }
