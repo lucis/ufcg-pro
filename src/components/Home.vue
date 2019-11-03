@@ -1,18 +1,16 @@
 <template>
   <div>
     <div class="flex justify-center mv3">
-      <div class="bgb br4 brb ph4 pv2">
-        <span class="alert-info"
+      <div class="bgb br4 brb ph4 pv2 flex flex-column items-center">
+        <span style="background-image: none;" class="alert-info"
           >Você está utilizando o <b>UFCGPro</b>. Veja todas as
-          <a target="_blank" href="https://gist.github.com/luciannojunior/65d8743fb9a5759de932861a6bb5b781">funcionalidades</a>.</span
+          <a target="_blank" class="underline" href="https://gist.github.com/luciannojunior/65d8743fb9a5759de932861a6bb5b781">funcionalidades</a>.</span
         >
+        <span class="text-center f2 b mt4" v-html="aulaAtual"></span>
       </div>
     </div>
-    <div class="flex justify-center items-center">
-      <span class="text-center f3 b" v-html="aulaAtual"></span>
-    </div>
     <div class="flex justify-between items-center">
-      <h3>Horário</h3>
+      <h3>{{ horario ? 'Horário' : '' }}</h3>
       <BaixaHorario :table="tableTurmas" />
     </div>
     <table v-html="horario" class="table table-striped table-condensed" style="border: 1px solid rgb(221, 221, 221);"></table>
@@ -39,11 +37,13 @@
 
 <script>
 import BaixaHorario from './BaixaHorario'
+const getNomeCadeira = tr => (ufcg.professor ? tr.children[ufcg.professor ? 1 : 2].innerText : tr.children[1].innerText.split('-')[1].trim())
+
 const extraiCadeiras = table => {
   return [...table.querySelectorAll('tbody tr')].map(tr => {
     return {
-      cadeira: tr.children[2].innerText,
-      horario: tr.children[4].innerText
+      cadeira: getNomeCadeira(tr),
+      horario: tr.children[ufcg.professor ? 3 : 4].innerText
         .split('\n')
         .filter(Boolean)
         .map(entry => {
@@ -85,13 +85,14 @@ export default {
   },
   methods: {
     calcularAulaAtual() {
-      const aula = getAulaProxima(this.tableTurmas)
+      const dataTeste = new Date()
+      const aula = getAulaProxima(this.tableTurmas, dataTeste)
       if (!aula) {
         this.aulaAtual = 'Sem aulas por hoje :D'
       } else {
         let label = ''
-        const { inicio, cadeira, sala } = aula
-        label += agora ? 'Ocorrendo agora: ' : `Próxima aula (${inicio}:00): `
+        const { inicio, cadeira, sala, agora } = aula
+        label += agora ? 'Ocorrendo agora: ' : `Próxima aula (${inicio}:00) : `
         label += `<span class="normal">${cadeira} - ${sala}</span>`
         this.aulaAtual = label
       }
@@ -100,7 +101,7 @@ export default {
   mounted() {
     ufcg.getPaginaHorario().then(doc => {
       const [turmas, horario] = doc.querySelectorAll('table')
-      this.horario = horario.innerHTML
+      this.horario = ufcg.professor ? null : horario.innerHTML
       this.tableTurmas = turmas
       this.calcularAulaAtual()
     })

@@ -26,13 +26,14 @@ const getCurrentPage = (url = '') => {
 }
 
 const PAGES = {
-  FREQUENCIA: 'frequencia',
-  NOTAS: 'notas',
+  FREQUENCIA: 'ProfessorTurmaFrequenciaEditar',
+  NOTAS: 'ProfessorTurmaNotasEditar',
   OFERTADAS: 'AlunoDisciplinasOfertadas',
   HISTORICO: 'AlunoHistorico',
   HOME: 'Home',
   FALTAS: 'AlunoTurmaFrequencia',
-  CURSO: 'AlunoTurmasListar'
+  CURSO: 'AlunoTurmasListar',
+  TURMAS: 'ProfessorTurmasListar'
 }
 
 const injectorsMap = {
@@ -42,7 +43,8 @@ const injectorsMap = {
   [PAGES.HISTORICO]: 'injectors/historico.js',
   [PAGES.HOME]: 'injectors/home.js',
   [PAGES.FALTAS]: 'injectors/faltas.js',
-  [PAGES.CURSO]: 'injectors/curso.js'
+  [PAGES.CURSO]: 'injectors/curso.js',
+  [PAGES.TURMAS]: 'injectors/curso.js'
 }
 
 const WHITELIST = ['localhost', 'ufcgexamples', 'pre.ufcg.edu.br:8443/ControleAcademicoOnline/']

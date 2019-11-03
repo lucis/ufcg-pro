@@ -59,10 +59,14 @@ const define = lib => {
     ano: hoje.getFullYear()
   }
 
+  lib.ufcg.professor = !!document.querySelector('select[name=selectPeriodo]')
+
   lib.ufcg.getPaginaHorario = async () => {
     const { periodo, ano } = lib.ufcg.hoje
-    // TODO: Checar se é professor e mudar a URL
-    return await lib.ufcg.fetchAndParse(`/ControleAcademicoOnline/Controlador?command=AlunoHorarioConfirmar&ano=${ano}&periodo=${periodo}`)
+    const url = lib.ufcg.professor
+      ? `/ControleAcademicoOnline/Controlador?command=ProfessorTurmasListar`
+      : `/ControleAcademicoOnline/Controlador?command=AlunoHorarioConfirmar&ano=${ano}&periodo=${periodo}`
+    return await lib.ufcg.fetchAndParse(url)
   }
 }
 if (!window.ufcg) {
