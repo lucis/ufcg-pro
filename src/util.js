@@ -66,7 +66,11 @@ const define = lib => {
     const url = lib.ufcg.professor
       ? `/ControleAcademicoOnline/Controlador?command=ProfessorTurmasListar`
       : `/ControleAcademicoOnline/Controlador?command=AlunoHorarioConfirmar&ano=${ano}&periodo=${periodo}`
-    return await lib.ufcg.fetchAndParse(url)
+    try {
+      return await lib.ufcg.fetchAndParse(url)
+    } catch (e) {
+      return null
+    }
   }
 }
 if (!window.ufcg) {

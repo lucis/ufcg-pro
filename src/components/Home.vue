@@ -6,14 +6,15 @@
           >Você está utilizando o <b>UFCGPro</b>. Veja todas as
           <a target="_blank" class="underline" href="https://gist.github.com/luciannojunior/65d8743fb9a5759de932861a6bb5b781">funcionalidades</a>.</span
         >
-        <span class="text-center f2 b mt4" v-html="aulaAtual"></span>
+        <span class="text-center f2 b mt4" v-if="!temTurmas">Parece que você está sem turmas!</span>
+        <span class="text-center f2 b mt4" v-if="temTurmas" v-html="aulaAtual"></span>
       </div>
     </div>
-    <div class="flex justify-between items-center">
+    <div class="flex justify-between items-center" v-if="temTurmas">
       <h3>{{ horario ? 'Horário' : '' }}</h3>
       <BaixaHorario :table="tableTurmas" />
     </div>
-    <table v-if="!professor" v-html="horario" class="table table-striped table-condensed" style="border: 1px solid rgb(221, 221, 221);"></table>
+    <table v-if="!professor && temTurmas" v-html="horario" class="table table-striped table-condensed" style="border: 1px solid rgb(221, 221, 221);"></table>
     <div class="flex justify-between">
       <div class="w-50">
         <h3>Links úteis</h3>
@@ -33,7 +34,7 @@
           </li>
         </ul>
       </div>
-      <Resumo v-if="!!tableTurmas && !professor" :table="tableTurmas" />
+      <Resumo v-if="!!tableTurmas && !professor && temTurmas" :table="tableTurmas" />
     </div>
   </div>
 </template>
@@ -86,7 +87,8 @@ export default {
       horario: 'Carregando...',
       tableTurmas: null,
       aulaAtual: '',
-      professor: ufcg.professor
+      professor: ufcg.professor,
+      temTurmas: false
     }
   },
   methods: {
@@ -106,6 +108,13 @@ export default {
   },
   mounted() {
     ufcg.getPaginaHorario().then(doc => {
+      if (!doc || !doc.querySelectorAll('table').length) {
+        console.log(
+          'UFCGPro: Não foi possível buscar a página de lista de turmas. Caso você tenha turmas em curso atualmente (e viu isso), abra umaissue em https://github.com/luciannojunior/ufcg-pro'
+        )
+        this.temTurmas = false
+        return
+      }
       const [turmas, horario] = doc.querySelectorAll('table')
       this.horario = ufcg.professor ? null : horario.innerHTML
       this.tableTurmas = turmas
