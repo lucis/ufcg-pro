@@ -15,11 +15,11 @@
       <tbody>
         <tr v-for="turma in turmas" v-bind:key="turma.cadeira">
           <td>{{ turma.cadeira }}</td>
-          <td class="text-nowrap" style="min-width: 120px;">
+          <td class="text-nowrap" style="min-width: 130px;">
             {{ mostrar ? turma.notas : '' }}
             <div v-if="!mostrar" style="width:108px; height: 20px; background-color: #ddd;"></div>
           </td>
-          <td class="text-nowrap" style="min-width: 120px;">
+          <td class="text-nowrap" style="min-width: 150px;">
             {{ mostrar ? turma.faltas : '' }}
             <div v-if="!mostrar" style="width:108px; height: 20px; background-color: #ddd;"></div>
           </td>
