@@ -4,10 +4,11 @@ import Home from '../components/Home'
 global.browser = require('webextension-polyfill')
 Vue.prototype.$browser = global.browser
 
-if (!document.querySelector('#login')) {
+const conteudo = document.querySelector('#conteudo')
+if (!document.querySelector('#login') && conteudo) {
   const div = document.createElement('div')
   div.id = 'inject-vue'
-  document.querySelector('#conteudo').appendChild(div)
+  conteudo.appendChild(div)
 
   Vue.config.devtools = process.env.NODE_ENV === 'development'
 
