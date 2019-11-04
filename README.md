@@ -1,6 +1,6 @@
 # UFCGpro
 
-![UFCGPro](https://i.imgur.com/LWfRmXb.png)
+<img src="https://raw.githubusercontent.com/luciannojunior/ufcg-pro/master/media/logo.png?s=10" width="200" />
 
 A extensão da Controle Acadêmico da Universidade Federal de Campina Grande.
 
