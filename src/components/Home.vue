@@ -119,6 +119,7 @@ export default {
       this.horario = ufcg.professor ? null : horario.innerHTML
       this.tableTurmas = turmas
       this.calcularAulaAtual()
+      this.temTurmas = true
     })
 
     setInterval(() => {
