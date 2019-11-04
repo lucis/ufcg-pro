@@ -13,7 +13,7 @@
       <h3>{{ horario ? 'Horário' : '' }}</h3>
       <BaixaHorario :table="tableTurmas" />
     </div>
-    <table v-html="horario" class="table table-striped table-condensed" style="border: 1px solid rgb(221, 221, 221);"></table>
+    <table v-if="!professor" v-html="horario" class="table table-striped table-condensed" style="border: 1px solid rgb(221, 221, 221);"></table>
     <div class="flex justify-between">
       <div class="w-50">
         <h3>Links úteis</h3>
@@ -33,7 +33,7 @@
           </li>
         </ul>
       </div>
-      <Resumo v-if="!!tableTurmas" :table="tableTurmas" />
+      <Resumo v-if="!!tableTurmas && !professor" :table="tableTurmas" />
     </div>
   </div>
 </template>
@@ -85,7 +85,8 @@ export default {
     return {
       horario: 'Carregando...',
       tableTurmas: null,
-      aulaAtual: ''
+      aulaAtual: '',
+      professor: ufcg.professor
     }
   },
   methods: {

@@ -8,6 +8,7 @@ const { version } = require('./package.json')
 
 const config = {
   mode: process.env.NODE_ENV,
+  devtool: 'cheap-module-source-map',
   context: __dirname + '/src',
   entry: {
     util: './util.js',
