@@ -39,10 +39,16 @@ const getTableTurmas = async () => {
   return doc.querySelectorAll('table')[0]
 }
 
+const getNomeDisciplina = tr => {
+  const text = tr.children[1].innerText
+  if (ufcg.professor) return text
+  return text.split(' - ')[1]
+}
+// Lembrar que essa não é a tabela Turmas em Curso, mas sim a tabela de horário
 const getTurmas = ref => {
   return [...ref.querySelectorAll('tbody tr')].map(tr => {
     return {
-      cadeira: tr.children[ufcg.professor ? 1 : 2].innerText,
+      cadeira: getNomeDisciplina(tr),
       horario: tr.children[ufcg.professor ? 3 : 4].innerText
         .split('\n')
         .filter(Boolean)
