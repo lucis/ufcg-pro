@@ -1,5 +1,5 @@
 <template>
-  <button class="btn btn-primary" v-on:click="exportarHorario()">
+  <button class="btn btn-primary" v-on:click="exportarHorario()" v-bind:disabled="!this.tableTurmas">
     Exportar Horário
     <span class="glyphicon glyphicon-circle-arrow-down"></span>
   </button>
@@ -29,14 +29,14 @@ const getFimPeriodo = () => {
   const { periodo, ano } = ufcg.hoje
   const date = new Date()
   date.setFullYear(ano)
-  date.setDate('15') // because
-  date.setMonth(periodo == '1' ? 5 : 12)
+  date.setDate('15') // just because
+  date.setMonth(periodo == '1' ? 5 : 11)
   return date
 }
 
 const getTableTurmas = async () => {
   const doc = await ufcg.getPaginaHorario()
-  return doc.querySelectorAll('table')[0]
+  return doc && doc.querySelectorAll('table')[0]
 }
 
 const getNomeDisciplina = tr => {

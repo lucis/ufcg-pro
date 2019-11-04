@@ -14,7 +14,6 @@ const config = {
     util: './util.js',
     background: './background.js',
     'popup/popup': './popup/popup.js',
-    home: './home.js',
     'injectors/frequencia': './injectors/frequencia.js',
     'injectors/notas': './injectors/notas.js',
     'injectors/historico': './injectors/historico.js',
