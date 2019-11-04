@@ -8,8 +8,8 @@ A extensão da Controle Acadêmico da Universidade Federal de Campina Grande.
 
 Você pode instalar a extensão de duas maneiras:
 
-1. Baixando e instalando a extensão na [Chrome Web Store]() ou [Firefox Addons]
-2. Baixando o `.xci` da última release e adicionando no seu browser
+1. **[WIP]** Baixando e instalando a extensão na [Chrome Web Store]() ou [Firefox Addons](#) 
+2. Clonando o repositório, `yarn && yarn build`, vá em `chrome://extensions`, ative o Modo de Desenvolvedor e clique em `Load Unpacked`, daí só selecione o diretório `dist` na pasta do repositório
 
 ## Funcionalidades
 
