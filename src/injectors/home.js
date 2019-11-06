@@ -4,7 +4,8 @@ import Home from '../components/Home'
 global.browser = require('webextension-polyfill')
 Vue.prototype.$browser = global.browser
 
-const isHome = !!document.querySelector('div.col-sm-3.col-xs-5.text-right')
+const isHome = !!document.querySelector('div.col-sm-3')
+console.log({ isHome })
 if (!document.querySelector('#login') && isHome) {
   const conteudo = document.querySelector('#conteudo')
   const div = document.createElement('div')
