@@ -46,6 +46,7 @@ import Resumo from './Resumo.vue'
 const getNomeCadeira = tr => (ufcg.professor ? tr.children[ufcg.professor ? 1 : 2].innerText : tr.children[1].innerText.split('-')[1].trim())
 
 const extraiCadeiras = table => {
+  if (!table) return []
   return [...table.querySelectorAll('tbody tr')].map(tr => {
     return {
       cadeira: getNomeCadeira(tr),
