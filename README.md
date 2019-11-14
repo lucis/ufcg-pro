@@ -9,7 +9,9 @@ A extensão da Controle Acadêmico da Universidade Federal de Campina Grande.
 Você pode instalar a extensão de duas maneiras:
 
 1. **[WIP]** Baixando e instalando a extensão na [Chrome Web Store]() ou [Firefox Addons](#) 
-2. Clonando o repositório, `yarn && yarn build`, vá em `chrome://extensions`, ative o Modo de Desenvolvedor e clique em `Load Unpacked`, daí só selecione o diretório `dist` na pasta do repositório
+2. Seguindo os passos da última [release](https://github.com/luciannojunior/ufcg-pro/releases) para a instalação manual.
+
+_Obs:_ O processo de review das lojas de extensões pode demorar semanas, e esta extensão ainda não foi aprovada.
 
 ## Funcionalidades
 
