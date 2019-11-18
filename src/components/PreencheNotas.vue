@@ -82,7 +82,6 @@ export default {
 
       const table = document.querySelector('form table')
       const notas = extrairNotas(this.content)
-      console.log(notas)
       const erros = []
       const it = a => a.innerText
       const grouped = notas.reduce((acc, cur) => ({ ...acc, [cur.matricula || cur.nome]: cur }), {})

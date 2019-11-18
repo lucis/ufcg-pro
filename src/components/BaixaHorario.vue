@@ -80,7 +80,7 @@ const montaICS = table => {
       const slots = horario[dia]
       slots.forEach(({ slot, sala }) => {
         const [inicio, fim] = slot.split('-')
-        const proximaData = getProximoDiaDaSemana(dia).toLocaleDateString()
+        const proximaData = getProximoDiaDaSemana(dia).toLocaleDateString('en-US')
         const begin = `${proximaData} ${inicio}`
         const end = `${proximaData} ${fim}`
         cal.addEvent(cadeira, 'Aula', sala, begin, end, { freq: 'WEEKLY', until: fimPeriodo })
