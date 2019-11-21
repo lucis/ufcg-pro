@@ -1,7 +1,7 @@
 {
   "name": "UFCGPro",
   "description": "Uma ferramenta para os usuários do Controle Acadêmico da UFCG - Universidade Federal de Campina Grande",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "manifest_version": 2,
   "icons": {
     "48": "icons/icon_48.png",
