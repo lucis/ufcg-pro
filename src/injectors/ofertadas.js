@@ -33,7 +33,6 @@ const montarCheckboxes = (ref = document) => {
     tr.appendChild(td)
   })
 }
-global.browser = require('webextension-polyfill')
 Vue.prototype.$browser = global.browser
 
 if (!document.querySelector('#login')) {

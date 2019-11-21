@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Chamada from '../components/Chamada'
 
-global.browser = require('webextension-polyfill')
 Vue.prototype.$browser = global.browser
 
 const div = document.createElement('div')

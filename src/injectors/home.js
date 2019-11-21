@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Home from '../components/Home'
 
-global.browser = require('webextension-polyfill')
 Vue.prototype.$browser = global.browser
 
 const isHome = !!document.querySelector('div.col-sm-3')

@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import PreencheNotas from '../components/PreencheNotas'
 
-global.browser = require('webextension-polyfill')
 Vue.prototype.$browser = global.browser
 
 const div = document.createElement('div')
@@ -16,4 +15,3 @@ const app = new Vue({
 })
 
 window.__VUE_DEVTOOLS_GLOBAL_HOOK__.Vue = app.constructor
-

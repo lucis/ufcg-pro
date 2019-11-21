@@ -16,5 +16,5 @@
     "persistent": false
   },
   "web_accessible_resources": ["*.js", "*.css"],
-  "permissions": ["https://ufcgexamples.lcnjnr.now.sh/*", "https://pre.ufcg.edu.br:8443/*"]
+  "permissions": ["tabs", "https://ufcgexamples.lcnjnr.now.sh/*", "*://pre.ufcg.edu.br/ControleAcademicoOnline/*"]
 }
