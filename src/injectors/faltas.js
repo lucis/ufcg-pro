@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Faltas from '../components/Faltas'
 
-global.browser = require('webextension-polyfill')
 Vue.prototype.$browser = global.browser
 
 if (!document.querySelector('#login')) {

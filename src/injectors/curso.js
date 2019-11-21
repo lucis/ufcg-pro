@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import BaixaHorario from '../components/BaixaHorario'
 
-global.browser = require('webextension-polyfill')
 Vue.prototype.$browser = global.browser
 
 if (!document.querySelector('#login')) {
