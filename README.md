@@ -1,18 +1,26 @@
 # UFCGPro
-
 A extensão da Controle Acadêmico da Universidade Federal de Campina Grande.
+
+_Esta extensão foi desenvolvida em um Trabalho de Conclusão de Curso da graduação de Ciência da Computação na Universidade Federal de Campina Grande com orientação do professor [Matheus Gaudencio](https://github.com/matheusgr). Agradeço imensamente a todos os professores e funcionários que mantém este curso no mais alto padrão do ensino brasileiro!_
 
 <img src="https://raw.githubusercontent.com/luciannojunior/ufcg-pro/master/media/logo.png?s=10" width="200" />
 
 ## Instalação
 
+No momento, esta extensão dá suporte aos seguintes navegadores: 
+
+### Google Chrome
+**AVISO:** Por enquanto, a extensão está em processo de review na loja de aplicativos do navegador Chrome, portanto não está disponível para download por lá. Porém, é possível ainda instalar a extensão manualmente. **Ao usar esta opção, você não receberá updates automaticamente**
+
 Você pode instalar a extensão de duas maneiras:
 
-1. **[WIP]** ~Baixando e instalando a extensão na [Chrome Web Store]()~
+1. ~Baixando e instalando a extensão na [Chrome Web Store]()~
 2. Seguindo os passos da última [release](https://github.com/luciannojunior/ufcg-pro/releases) para a instalação manual.
-3. Para o Firefox, acesse [este link](https://ufcgprodist.now.sh/ufcgpro-1.0.5-an+fx.xpi) - arquivo assinado junto com a Mozilla.
 
-_Obs:_ O processo de review da loja de extensões do Chrome pode demorar semanas, e **esta extensão ainda não foi aprovada.**
+### Mozila Firefox
+Segundo os regulamentos da loja do Firefox para addons, extensões que não focam no público geral devem ser distribuídas pelo próprio desenvolvedor, sendo apenas assinadas digitalmente com a empresa. O próprio navegador checará updates automaticamente.
+
+- Para instalar o **UFCGPro** no Firefox acesse [este link](https://ufcgprodist.now.sh/ufcgpro-1.0.5-an+fx.xpi).
 
 ## Funcionalidades
 
