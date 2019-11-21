@@ -152,8 +152,11 @@ function removeAcentos(strAccents) {
 
 const HOMOFONOS = {
   anna: 'ana',
+  cayo: 'caio',
+  kaio: 'caio',
+  kayo: 'caio',
   mateus: 'matheus',
-  tiago: 'tiago',
+  tiago: 'thiago',
   vitor: 'victor',
   artur: 'arthur',
   davi: 'david',
@@ -166,7 +169,14 @@ const HOMOFONOS = {
   kamila: 'camila',
   kamyla: 'camila',
   camyla: 'camila',
-  laurah: 'laura'
+  laurah: 'laura',
+  jonata: 'jonatas',
+  jhonata: 'jonatas',
+  johnatan: 'jonatas',
+  jonathan: 'jonatas',
+  jonathas: 'jonatas',
+  isabelly: 'isabele',
+  isabely: 'isabele'
 }
 
 /**
