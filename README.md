@@ -10,11 +10,9 @@ _Esta extensão foi desenvolvida em um Trabalho de Conclusão de Curso da gradua
 No momento, esta extensão dá suporte aos seguintes navegadores: 
 
 ### Google Chrome
-**AVISO:** Por enquanto, a extensão está em processo de review na loja de aplicativos do navegador Chrome, portanto não está disponível para download por lá. Porém, é possível ainda instalar a extensão manualmente. **Ao usar esta opção, você não receberá updates automaticamente**
-
 Você pode instalar a extensão de duas maneiras:
 
-1. ~Baixando e instalando a extensão na [Chrome Web Store]()~
+1. Baixando e instalando a extensão na [Chrome Web Store](https://chrome.google.com/webstore/detail/ufcgpro/niacojggmhhjndikhcdmmijjoepkgjeb)
 2. Seguindo os passos da última [release](https://github.com/luciannojunior/ufcg-pro/releases) para a instalação manual.
 
 ### Mozila Firefox
