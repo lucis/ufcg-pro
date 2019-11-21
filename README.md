@@ -10,7 +10,7 @@ Você pode instalar a extensão de duas maneiras:
 
 1. **[WIP]** ~Baixando e instalando a extensão na [Chrome Web Store]()~
 2. Seguindo os passos da última [release](https://github.com/luciannojunior/ufcg-pro/releases) para a instalação manual.
-3. Para o Firefox, acesse [este link](https://ufcgprodist.now.sh/ufcgpro-1.0.4-an+fx.xpi) - arquivo assinado junto com a Mozilla.
+3. Para o Firefox, acesse [este link](https://ufcgprodist.now.sh/ufcgpro-1.0.5-an+fx.xpi) - arquivo assinado junto com a Mozilla.
 
 _Obs:_ O processo de review da loja de extensões do Chrome pode demorar semanas, e **esta extensão ainda não foi aprovada.**
 
