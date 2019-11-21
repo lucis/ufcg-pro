@@ -2,10 +2,9 @@
   <div class="flex flex-column items-center br4 bgb pv4">
     <h1 class="mb2 mt0">Chamada{{ finalizada ? ' finalizada' : ' interativa' }}</h1>
     <div v-if="finalizada" class="flex flex-row justify-center">
-    
-        <button v-on:click="recomecar()" v-bind:disabled="alunoAtual === 0">
-          Recomeçar
-        </button>
+      <button v-on:click="recomecar()" v-bind:disabled="alunoAtual === 0">
+        Recomeçar
+      </button>
     </div>
     <div class="black-60 f4 pv2 ph3 flex justify-between" style="width: 50vw" v-if="!finalizada">
       <div class="di" v-if="!finalizada">
@@ -17,17 +16,20 @@
         </select>
       </div>
       <div class="di">
-        <span>Aluno <b>{{ alunoAtual + 1 }}</b> de <b>{{ alunos.length }}</b></span>
+        <span
+          >Aluno <b>{{ alunoAtual + 1 }}</b> de <b>{{ alunos.length }}</b></span
+        >
       </div>
       <div class="di">
         <button v-on:click="recomecar()" v-bind:disabled="alunoAtual === 0">
           Recomeçar
         </button>
       </div>
-      <div class="di w-50 text-center" >
+      <div class="di w-50 text-center">
         <div v-if="ultimaAcao" class="di">
-          <b>Última Ação:</b> 
-          {{ ultimaAcao.acao }} em {{ ultimaAcao.nome.split(' ')[0] }}
+          <span>
+            <b>Última Ação:</b>
+            {{ ultimaAcao.acao }} em {{ ultimaAcao.nome.split(' ')[0] }}
           </span>
         </div>
         <div v-if="!ultimaAcao" class="di">
@@ -35,13 +37,12 @@
         </div>
       </div>
     </div>
-    <div style="width: 40vw" class="flex"> 
-    <span v-if="!finalizada" class="f1 mr3">
-      Aluno atual: 
-    </span>
+    <div style="width: 40vw" class="flex">
+      <span v-if="!finalizada" class="f1 mr3">
+        Aluno atual:
+      </span>
       <b class="f1"> {{ nomesAlunos[alunoAtual] }}</b>
     </div>
-    </span>
     <p class="black-60 pa0 ma0" v-if="!finalizada"><b>Dica: </b> Utilize os atalhos de teclado descritos abaixo!</p>
     <div v-if="!finalizada">
       <table class="table table-bordered ma0">
@@ -132,6 +133,50 @@ const getAlunos = table => {
     }
   })
 }
+function removeAcentos(strAccents) {
+  var strAccents = strAccents.split('')
+  var strAccentsOut = new Array()
+  var strAccentsLen = strAccents.length
+  var accents = 'ÀÁÂÃÄÅàáâãäåÒÓÔÕÕÖØòóôõöøÈÉÊËèéêëðÇçÐÌÍÎÏìíîïÙÚÛÜùúûüÑñŠšŸÿýŽž'
+  var accentsOut = 'AAAAAAaaaaaaOOOOOOOooooooEEEEeeeeeCcDIIIIiiiiUUUUuuuuNnSsYyyZz'
+  for (var y = 0; y < strAccentsLen; y++) {
+    if (accents.indexOf(strAccents[y]) != -1) {
+      strAccentsOut[y] = accentsOut.substr(accents.indexOf(strAccents[y]), 1)
+    } else {
+      strAccentsOut[y] = strAccents[y]
+    }
+  }
+  strAccentsOut = strAccentsOut.join('')
+  return strAccentsOut
+}
+
+const HOMOFONOS = {
+  anna: 'ana',
+  mateus: 'matheus',
+  tiago: 'tiago',
+  vitor: 'victor',
+  artur: 'arthur',
+  davi: 'david',
+  elena: 'helena',
+  sophia: 'sofia',
+  deborah: 'debora',
+  isabella: 'isabela',
+  lukas: 'lucas',
+  camilla: 'camila',
+  kamila: 'camila',
+  kamyla: 'camila',
+  camyla: 'camila',
+  laurah: 'laura'
+}
+
+/**
+ * Trata nomes homófonos. Deve ser chamado apenas com o primeiro nome do aluno.
+ */
+const normalizarNome = (nome = '') => {
+  const minusculo = nome.trim().toLowerCase()
+  const nomeFinal = removeAcentos(minusculo)
+  return HOMOFONOS[nomeFinal] || nomeFinal
+}
 
 export default {
   name: 'Chamada',
@@ -146,15 +191,17 @@ export default {
       const nomes = this.alunos && this.alunos.map(({ nome }) => nome.toUpperCase())
       const nomeAcc = nomes.reduce((acc, nome) => {
         const primeiroNome = nome.split(' ')[0]
-        if (!acc[primeiroNome]) {
-          acc[primeiroNome] = 0
+        const nomeNormal = normalizarNome(primeiroNome)
+        if (!acc[nomeNormal]) {
+          acc[nomeNormal] = 0
         }
-        acc[primeiroNome]++
+        acc[nomeNormal]++
         return acc
       }, {})
       return nomes.map(nome => {
         const primeiroNome = nome.split(' ')[0]
-        if (nomeAcc[primeiroNome] === 1) {
+        const nomeNormal = normalizarNome(primeiroNome)
+        if (nomeAcc[nomeNormal] === 1) {
           return primeiroNome
         } else {
           return getAbreviacao(nome)
@@ -195,10 +242,10 @@ export default {
     },
     reduce(action) {
       const active = document.activeElement
-      if (active.nodeName === 'INPUT'){
+      if (active.nodeName === 'INPUT') {
         return
       }
-      if (active.nodeName !== 'BODY'){
+      if (active.nodeName !== 'BODY') {
         active.blur()
       }
       if (this.finalizada) {
@@ -208,6 +255,7 @@ export default {
       const nome = this.alunos[this.alunoAtual].nome
       const input = document.querySelector(`input[name=f${this.aulaSelecionada}_${matricula}]`)
       if (!input) {
+        this.alunoAtual++
         return console.log(`Não encontrado input do aluno com matrícula ` + matricula)
       }
       switch (action) {
