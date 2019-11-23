@@ -82,6 +82,7 @@ const config = {
       { from: 'ufcg_tachyons.css', to: 'ufcg_tachyons.css' },
       { from: 'papaparse.js', to: 'papaparse.js' },
       { from: 'ics.js', to: 'ics.js' },
+      { from: 'styles', to: 'styles' },
       { from: 'popup/popup.html', to: 'popup/popup.html', transform: transformHtml },
       {
         from: 'manifest.json',

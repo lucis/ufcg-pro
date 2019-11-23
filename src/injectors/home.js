@@ -1,10 +1,13 @@
 import Vue from 'vue'
 import Home from '../components/Home'
+import setHeader from './header'
 
 Vue.prototype.$browser = global.browser
 
 const isHome = !!document.querySelector('div.col-sm-3')
 if (!document.querySelector('#login') && isHome) {
+  setHeader()
+
   const conteudo = document.querySelector('#conteudo')
   const div = document.createElement('div')
   div.id = 'inject-vue'

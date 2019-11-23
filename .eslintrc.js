@@ -8,7 +8,7 @@ module.exports = {
   },
   env: {
     browser: true,
-    webextensions: true,
+    webextensions: true
   },
   extends: [
     // https://github.com/vuejs/eslint-plugin-vue#priority-a-essential-error-prevention
@@ -20,13 +20,11 @@ module.exports = {
     'plugin:prettier/recommended'
   ],
   // required to lint *.vue files
-  plugins: [
-    'vue'
-  ],
+  plugins: ['vue'],
   // add your custom rules here
   rules: {
-    "camelcase": [2, { "properties": "never" }]
-    "semi": ["error", "never"],
+    camelcase: [2, { properties: 'never' }],
+    semi: ['error', 'never'],
     // allow async-await
     'generator-star-spacing': 'off',
     // allow debugger during development

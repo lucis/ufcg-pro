@@ -14,8 +14,10 @@
       <h3>{{ horario ? 'Horário' : '' }}</h3>
       <BaixaHorario :table="tableTurmas" />
     </div>
-    <table v-if="!professor && temTurmas" v-html="horario" class="table table-striped table-condensed" style="border: 1px solid rgb(221, 221, 221);"></table>
-    <div class="flex justify-between">
+    <div id="horario" class="table-responsive">
+      <table v-if="!professor && temTurmas" v-html="horario" class="table table-striped table-condensed" style="border: 1px solid rgb(221, 221, 221);"></table>
+    </div>
+    <div id="linksEResumo" class="flex justify-between">
       <div class="w-50">
         <h3>Links úteis</h3>
         <ul>

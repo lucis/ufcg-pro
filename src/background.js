@@ -47,6 +47,10 @@ const injectorsMap = {
   [PAGES.TURMAS]: 'injectors/curso.js'
 }
 
+const cssMap = {
+  [PAGES.HOME]: 'styles/home.css'
+}
+
 const WHITELIST = ['localhost', 'ufcgexamples', 'pre.ufcg.edu.br:8443/ControleAcademicoOnline/']
 browser.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
   const { url } = tab
@@ -60,6 +64,10 @@ browser.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
   injectScript('ics.js')
 
   const page = getCurrentPage(url)
+
   const shouldInject = injectorsMap[page]
+  const shouldInjectCss = cssMap[page]
+
   shouldInject && injectScript(shouldInject)
+  shouldInjectCss && injectCSS(shouldInjectCss)
 })
