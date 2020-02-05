@@ -1,5 +1,5 @@
 <template>
-  <div v-if="shouldDisplay" class="flex items-center flex-row justify-around bgb ph3 pa2 br4">
+  <div v-if="shouldDisplay" class="flex items-center flex-row justify-around bgb ph3 pa2 br4" style="min-height: 260px">
     <div class="w-50">
       <h3 class="text-center">Disciplinas Planejadas</h3>
       <p>Clique no botão ao lado para preencher as respectivas disciplinas. <b>Você ainda precisará enviar o formulário!</b></p>

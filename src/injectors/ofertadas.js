@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Planner from '../components/Planner'
+
 const montarCheckboxes = (ref = document) => {
   // O componente deve preencher isso para comunicação com os checkboxes
   const turmas = JSON.parse(localStorage.getItem('matricula')) || []

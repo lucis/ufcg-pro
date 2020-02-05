@@ -1,0 +1,60 @@
+@import 'header.css';
+
+@media only screen and (max-width: 768px) {
+  #corpo {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+  }
+
+  #conteudo {
+    display: flex;
+    font-size: 1.4rem;
+    flex-direction: column;
+    width: 100%;
+    overflow: hidden;
+    border: none;
+  }
+
+  .alert {
+    overflow: hidden;
+  }
+
+  .alert > ul {
+    padding: 0.7rem;
+  }
+
+  #conteudo > .row {
+    margin: 1rem 0;
+    background-image: linear-gradient(to bottom, #d9edf7 0, #5bb3ff42 100%);
+    border-radius: 1rem;
+  }
+
+  #conteudo > .row > div {
+    padding: 0;
+    margin: 0.4rem 0;
+    padding-left: 1rem;
+    width: auto;
+  }
+
+  #horario td {
+    height: 6rem;
+  }
+
+  #linksEResumo {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #linksEResumo > :first-child {
+    width: 100%;
+  }
+
+  #linksEResumo > :first-child > :nth-child(2) > :nth-child(n) {
+    margin: 1rem 0;
+  }
+
+  #linksEResumo td {
+    height: 4rem;
+  }
+}

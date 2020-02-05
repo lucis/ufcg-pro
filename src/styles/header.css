@@ -1,0 +1,94 @@
+@media only screen and (max-width: 768px) {
+  #header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1rem;
+    margin: 0 0 1rem 0;
+    padding: 1rem;
+    width: 100%;
+    border: none;
+    border-bottom: solid 0.4rem #428bca;
+    border-radius: 0;
+  }
+
+  #header > .row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #header > .row > div:nth-child(1) {
+    padding: 0 0.4rem 0.4rem;
+  }
+
+  #header > .row > div:nth-child(2) {
+    display: flex;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #menu {
+    display: block;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background-color: white;
+    border: none;
+    border-bottom: solid 0.4rem #428bca;
+    border-radius: 0;
+    padding-bottom: 1rem;
+  }
+
+  #menu > :first-child {
+    height: 100%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .nav-pills > li + li {
+    margin-left: 0;
+  }
+
+  #menu > :first-child > li:nth-child(n) {
+    margin: 0.8rem 4rem;
+    flex-grow: 1;
+  }
+
+  #menu > :first-child > li:nth-child(n) > ul {
+    width: 100%;
+  }
+
+  #menu > :first-child > li:nth-child(n) > ul > li {
+    margin: 0.3rem 0;
+    width: 100%;
+    /* border-bottom: solid 0.1rem lightblue; */
+  }
+
+  #menu > :first-child > li:nth-child(n) > ul > li > a {
+    text-align: center;
+  }
+
+  .bar {
+    margin: 0.4rem 0;
+    border-bottom: solid 0.4rem white;
+  }
+
+  #menuButton {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: auto 0;
+    padding: 0.3rem 0.5rem;
+    border-radius: 0.2rem;
+    width: 5rem;
+    height: 4rem;
+    background-color: #428bca;
+  }
+
+  .active {
+    border: solid 0.3rem #2c5579;
+  }
+}
