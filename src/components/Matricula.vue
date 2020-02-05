@@ -1,5 +1,5 @@
 <template>
-  <div v-if="shouldDisplay" class="flex flex-row justify-around bgb ph3 pa2 br4" style="min-height: 260px">
+  <div v-if="shouldDisplay" class="flex items-center flex-row justify-around bgb ph3 pa2 br4" style="min-height: 260px">
     <div class="w-50">
       <h3 class="text-center">Disciplinas Planejadas</h3>
       <p>Clique no botão ao lado para preencher as respectivas disciplinas. <b>Você ainda precisará enviar o formulário!</b></p>
@@ -9,7 +9,7 @@
         </li>
       </ul>
     </div>
-    <div class="w-50">
+    <div class="w-50 flex items-center justify-center">
       <button class="btn btn-success mt3" v-on:click="marcar()">Preencher Disciplinas</button>
     </div>
   </div>
@@ -35,12 +35,12 @@ const marcarMatricula = disciplinas => {
 }
 
 export default {
-  name: 'Planner',
+  name: 'Matricula',
   methods: {
     marcar() {
       const erros = marcarMatricula(this.planejadas)
       if (erros.length) {
-        alert('Erro: Não foi possível marcar: ', erros.map({nome} => nome).join(','))
+        alert(`Erro: Não foi possível marcar: ${erros.map(({ nome }) => nome).join(',')}`)
       }
     },
     getLabel({ codigo, nome }) {

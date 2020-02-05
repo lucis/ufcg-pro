@@ -28,6 +28,28 @@
         </tbody>
       </table>
     </div>
+    <table class="table table-striped table-hover table-bordered table-condensed">
+      <thead>
+        <tr>
+          <th>Disciplina</th>
+          <th>Notas</th>
+          <th>Faltas/Limite</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="turma in turmas" v-bind:key="turma.cadeira">
+          <td>{{ turma.cadeira }}</td>
+          <td class="text-nowrap" style="min-width: 130px;">
+            {{ mostrar ? turma.notas : '' }}
+            <div v-if="!mostrar" style="width:108px; height: 20px; background-color: #ddd;"></div>
+          </td>
+          <td class="text-nowrap" style="min-width: 150px;">
+            {{ mostrar ? turma.faltas : '' }}
+            <div v-if="!mostrar" style="width:108px; height: 20px; background-color: #ddd;"></div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </template>
 
@@ -44,7 +66,7 @@ const getParams = url => {
 
 const getHorasAula = horario => {
   return horario.split('\n').length
-  //TODO
+  // TODO
 }
 
 const faltasPath = (codigo, turma) =>

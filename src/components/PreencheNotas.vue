@@ -101,7 +101,13 @@ export default {
           .filter(Boolean)
           .filter(maybeInput => maybeInput.id && maybeInput.id[0] === 'n')
         const campos = [...camposNotas, getFinal(tr)]
-        const preparaNota = nota => (nota ? nota.replace('.', ',') : '')
+        const preparaNota = nota => {
+          if (!nota || !nota.length) return ''
+          if (!nota.length) return
+          if (nota.length > 5) return ''
+          return nota.replace('.', ',')
+        }
+
         campos.forEach((input, i) => {
           if (input.value) {
             erros.push({ type: SUBS, aluno: nome })

@@ -19,6 +19,7 @@ const getCurrentPage = (url = '') => {
   const slots = url.split('?')
   if (url.includes('notas')) return PAGES.NOTAS
   if (url.includes('frequencia')) return PAGES.FREQUENCIA
+  if (url.includes('Matricula')) return PAGES.MATRICULA
   if (slots.length === 1) return PAGES.HOME
   const query = url.split('?').pop()
   const params = new URLSearchParams(query)
@@ -33,7 +34,8 @@ const PAGES = {
   HOME: 'Home',
   FALTAS: 'AlunoTurmaFrequencia',
   CURSO: 'AlunoTurmasListar',
-  TURMAS: 'ProfessorTurmasListar'
+  TURMAS: 'ProfessorTurmasListar',
+  MATRICULA: 'TODO-PaginaDeMatricula'
 }
 
 const injectorsMap = {
@@ -44,7 +46,8 @@ const injectorsMap = {
   [PAGES.HOME]: 'injectors/home.js',
   [PAGES.FALTAS]: 'injectors/faltas.js',
   [PAGES.CURSO]: 'injectors/curso.js',
-  [PAGES.TURMAS]: 'injectors/curso.js'
+  [PAGES.TURMAS]: 'injectors/curso.js',
+  [PAGES.MATRICULA]: 'injectors/matricula.js'
 }
 
 const cssMap = {

@@ -16,7 +16,7 @@
     "persistent": false
   },
   "web_accessible_resources": ["*.js", "*.css"],
-  "permissions": ["tabs", "https://ufcgexamples.lcnjnr.now.sh/*", "*://pre.ufcg.edu.br/ControleAcademicoOnline/*"],
+  "permissions": ["tabs", "https://ufcgexamples.lcnjnr.now.sh/*", "*://pre.ufcg.edu.br/ControleAcademicoOnline/*", "*://localhost/*"],
   "applications": {
     "gecko": {
       "update_url": "https://ufcgprodist.now.sh/updates.json"

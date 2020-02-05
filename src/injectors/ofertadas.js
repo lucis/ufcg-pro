@@ -38,7 +38,6 @@ Vue.prototype.$browser = global.browser
 
 if (!document.querySelector('#login')) {
   montarCheckboxes()
-
   const div = document.createElement('div')
   div.id = 'inject-vue'
 

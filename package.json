@@ -1,6 +1,6 @@
 {
   "name": "ufcg-pro",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Uma ferramenta para os usuários do Controle Acadêmico da UFCG - Universidade Federal de Campina Grande",
   "author": "Luciano Júnior <luciannojunior@gmail.com>",
   "license": "MIT",
@@ -12,11 +12,20 @@
     "build:dev": "cross-env NODE_ENV=development webpack --hide-modules",
     "build-zip": "node scripts/build-zip.js",
     "watch": "yarn run build -- --watch",
-    "watch:dev": "cross-env HMR=true yarn run build:dev -- --watch"
+    "watch:dev": "cross-env HMR=true yarn run build:dev -- --watch",
+    "release": "release-it && yarn build && yarn build-zip"
   },
   "husky": {
     "hooks": {
       "pre-commit": "pretty-quick --staged"
+    }
+  },
+  "release-it": {
+    "github": {
+      "release": true
+    },
+    "npm": {
+      "publish": false
     }
   },
   "dependencies": {
@@ -55,6 +64,7 @@
     "node-sass": "^4.9.3",
     "prettier": "^1.17.1",
     "pretty-quick": "^1.8.0",
+    "release-it": "^12.4.3",
     "sass-loader": "^7.1.0",
     "vue-loader": "^15.4.2",
     "vue-template-compiler": "^2.6.10",
