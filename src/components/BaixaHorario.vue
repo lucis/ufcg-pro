@@ -91,7 +91,7 @@ const montaICS = table => {
 }
 
 const irParaAjuda = () => {
-  const win = window.open('https://gist.github.com/luciannojunior/1243ac0bd195647141c7d7f5d3f2691a', '_blank')
+  const win = window.open('https://gist.github.com/lucis/1243ac0bd195647141c7d7f5d3f2691a', '_blank')
   win.focus()
 }
 export default {

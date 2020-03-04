@@ -4,7 +4,7 @@
       <div class="bgb br4 brb ph4 pv2 flex flex-column items-center">
         <span style="background-image: none;" class="alert-info"
           >Você está utilizando o <b>UFCGPro</b>. Veja todas as
-          <a target="_blank" class="underline" href="https://gist.github.com/luciannojunior/65d8743fb9a5759de932861a6bb5b781">funcionalidades</a>.</span
+          <a target="_blank" class="underline" href="https://bit.ly/ufcgpro-funcionalidades">funcionalidades</a>.</span
         >
         <span class="text-center f2 b mt4" v-if="!temTurmas">Parece que você está sem turmas!</span>
         <span class="text-center f2 b mt4" v-if="temTurmas" v-html="aulaAtual"></span>
