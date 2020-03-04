@@ -12,14 +12,11 @@ No momento, esta extensão dá suporte aos seguintes navegadores:
 
 ### Google Chrome
 
-Você pode instalar a extensão de duas maneiras:
-
-1. Baixando e instalando a extensão na [Chrome Web Store](https://chrome.google.com/webstore/detail/ufcgpro/niacojggmhhjndikhcdmmijjoepkgjeb)
-2. Seguindo os passos da última [release](https://github.com/lucis/ufcg-pro/releases) para a instalação manual.
+1. Baixe e instale a extensão na [Chrome Web Store](https://chrome.google.com/webstore/detail/ufcgpro/niacojggmhhjndikhcdmmijjoepkgjeb)
 
 ### Mozila Firefox
 
-Segundo os regulamentos da loja do Firefox para addons, extensões que não focam no público geral devem ser distribuídas pelo próprio desenvolvedor, sendo apenas assinadas digitalmente com a empresa. O próprio navegador checará updates automaticamente.
+Segundo os regulamentos da loja do Firefox para addons, extensões que não focam no público geral devem ser distribuídas pelo próprio desenvolvedor, sendo apenas assinadas digitalmente com a empresa. **O próprio navegador checará updates automaticamente.**
 
 - Para instalar o **UFCGPro** no Firefox acesse [este link](https://ufcgprodist.now.sh/ufcgpro-1.0.6-an+fx.xpi).
 
@@ -35,5 +32,5 @@ Segundo os regulamentos da loja do Firefox para addons, extensões que não foca
 
 1. Você deve ter instalado o `Node.js` e preferencialmente o Google Chrome
 2. Clone este repositório e rode `yarn && yarn watch:dev` na sua pasta. (Se você usa `npm` rode `npm install && npm run watch:dev`
-3. Siga as mesmas instruções [deste guia](https://github.com/lucis/ufcg-pro/releases), só que agora selecione a pasta `dist` que foi criada no repositório (se tudo deu certo no passo 2)
+3. Siga as mesmas instruções [deste guia](https://github.com/lucis/ufcg-pro/releases/tag/v1.0.5), só que agora selecione a pasta `dist` que foi criada no repositório (se tudo deu certo no passo 2)
 4. Olhe o arquivo `background.js` que você vai ter uma boa ideia de como tudo funciona. Eu uso o Vue.js para criar as interfaces, mas não deve ser difícil usar qualquer outra coisa (só configurar o `webpack.config.js`)
