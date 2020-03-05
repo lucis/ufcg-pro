@@ -4,7 +4,7 @@ A extensão da Controle Acadêmico da Universidade Federal de Campina Grande.
 
 _Esta extensão foi desenvolvida em um Trabalho de Conclusão de Curso da graduação de Ciência da Computação na Universidade Federal de Campina Grande com orientação do professor [Matheus Gaudencio](https://github.com/matheusgr). Agradeço imensamente a todos os professores e funcionários que mantém este curso no mais alto padrão do ensino brasileiro!_
 
-_Agradeço também ao Dr. José Jailson Nicácio Alves, professor do Departamento de Engenharia Química da UFCG, por auxilar a validação da extensão._
+_Agradeço também ao Dr. José Jailson Nicácio Alves, professor do Departamento de Engenharia Química da UFCG, por auxiliar na validação do projeto._
 
 **Para ler o artigo entregue, clique [aqui](./ufcgpro-tcc-lucis.pdf)**
 
