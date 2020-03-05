@@ -4,6 +4,10 @@ A extensão da Controle Acadêmico da Universidade Federal de Campina Grande.
 
 _Esta extensão foi desenvolvida em um Trabalho de Conclusão de Curso da graduação de Ciência da Computação na Universidade Federal de Campina Grande com orientação do professor [Matheus Gaudencio](https://github.com/matheusgr). Agradeço imensamente a todos os professores e funcionários que mantém este curso no mais alto padrão do ensino brasileiro!_
 
+_Agradeço também ao Dr. José Jailson Nicácio Alves, professor do Departamento de Engenharia Química da UFCG, por auxilar a validação da extensão._
+
+**Para ler o artigo entregue, clique [aqui](./ufcgpro-tcc-lucis.pdf)**
+
 <img src="https://raw.githubusercontent.com/lucis/ufcg-pro/master/media/logo.png?s=10" width="200" />
 
 ## Instalação
@@ -46,7 +50,7 @@ Segundo os regulamentos da loja do Firefox para addons, extensões que não foca
 
 5. Acesse o [Dashboard da Chrome Web Store](https://chrome.google.com/webstore/devconsole) e, em Pacote, suba o artefato atualizado.
 6. Após o upload do pacote, **é necessário clicar em Publicar Item** para a alteração ir para revisão.
-7. :pray: **Reze** para que o _review_ não dure semanas (ocorrer dias antes da minha apresentação de TCC)
+7. :pray: **Reze** para que o _review_ não dure semanas (ocorreu dias antes da minha apresentação de TCC)
 
 **Firefox Release**
 
