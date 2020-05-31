@@ -54,7 +54,7 @@ const cssMap = {
   [PAGES.HOME]: 'styles/home.css'
 }
 
-const WHITELIST = ['localhost', 'ufcgexamples', 'pre.ufcg.edu.br:8443/ControleAcademicoOnline/']
+const WHITELIST = ['ufcgexamples', 'pre.ufcg.edu.br:8443/ControleAcademicoOnline/']
 browser.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
   const { url } = tab
   const shouldAct = url && WHITELIST.some(allowed => url.includes(allowed)) && changeInfo.status === 'complete'
