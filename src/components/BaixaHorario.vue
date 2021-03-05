@@ -40,9 +40,8 @@ const getTableTurmas = async () => {
 }
 
 const getNomeDisciplina = tr => {
-  const text = tr.children[1].innerText
-  if (ufcg.professor) return text
-  return text.split(' - ')[1]
+  const text = tr.children[2].innerText
+  return text
 }
 // Lembrar que essa não é a tabela Turmas em Curso, mas sim a tabela de horário
 const getTurmas = ref => {
