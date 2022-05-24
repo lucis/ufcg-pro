@@ -35,7 +35,8 @@ const PAGES = {
   FALTAS: 'AlunoTurmaFrequencia',
   CURSO: 'AlunoTurmasListar',
   TURMAS: 'ProfessorTurmasListar',
-  MATRICULA: 'TODO-PaginaDeMatricula'
+  MATRICULA: 'TODO-PaginaDeMatricula',
+  NOTAS_ALUNO: 'AlunoTurmaNotas'
 }
 
 const injectorsMap = {
@@ -47,7 +48,8 @@ const injectorsMap = {
   [PAGES.FALTAS]: 'injectors/faltas.js',
   [PAGES.CURSO]: 'injectors/curso.js',
   [PAGES.TURMAS]: 'injectors/curso.js',
-  [PAGES.MATRICULA]: 'injectors/matricula.js'
+  [PAGES.MATRICULA]: 'injectors/matricula.js',
+  [PAGES.NOTAS_ALUNO]: 'injectors/notas_aluno.js'
 }
 
 const cssMap = {
