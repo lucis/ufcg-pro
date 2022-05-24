@@ -1,6 +1,6 @@
 <template>
   <div style="display: flex; justify-content: flex-end; margin-bottom: 12px;">
-    <a v-on:click="download" class="btn btn-primary" href="#" title="Download como CSV"> <span class="glyphicon glyphicon-circle-arrow-down"></span></a>
+    <a v-on:click="download" class="btn btn-primary" href="#" title="Download como CSV">Baixar notas <span class="glyphicon glyphicon-circle-arrow-down"></span></a>
   </div>
 </template>
 
