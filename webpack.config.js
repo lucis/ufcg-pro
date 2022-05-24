@@ -21,7 +21,8 @@ const config = {
     'injectors/home': './injectors/home.js',
     'injectors/faltas': './injectors/faltas.js',
     'injectors/curso': './injectors/curso.js',
-    'injectors/matricula': './injectors/matricula.js'
+    'injectors/matricula': './injectors/matricula.js',
+    'injectors/notas_aluno': './injectors/notas_aluno.js'
   },
   output: {
     path: __dirname + '/dist',
