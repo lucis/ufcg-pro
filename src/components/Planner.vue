@@ -73,7 +73,7 @@ export default {
       if (cheias) {
         document.querySelectorAll('tbody tr').forEach(tr => {
           if (!tr.children[4]) return
-          if (parseInt(tr.children[4].innerText.split('/')[0]) === 0) {
+          if (parseInt(tr.children[4].innerText.split('/')[0]) !== 0) {
             tr.style.display = checked ? 'none' : ''
           }
         })
