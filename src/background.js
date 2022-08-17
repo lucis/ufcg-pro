@@ -36,7 +36,8 @@ const PAGES = {
   CURSO: 'AlunoTurmasListar',
   TURMAS: 'ProfessorTurmasListar',
   MATRICULA: 'TODO-PaginaDeMatricula',
-  NOTAS_ALUNO: 'AlunoTurmaNotas'
+  NOTAS_ALUNO: 'AlunoTurmaNotas',
+  REGISTRO_AULAS: 'ProfessorTurmaAulasEditar'
 }
 
 const injectorsMap = {
@@ -49,14 +50,15 @@ const injectorsMap = {
   [PAGES.CURSO]: 'injectors/curso.js',
   [PAGES.TURMAS]: 'injectors/curso.js',
   [PAGES.MATRICULA]: 'injectors/matricula.js',
-  [PAGES.NOTAS_ALUNO]: 'injectors/notas_aluno.js'
+  [PAGES.NOTAS_ALUNO]: 'injectors/notas_aluno.js',
+  [PAGES.REGISTRO_AULAS]: 'injectors/registro_aulas.js'
 }
 
 const cssMap = {
   [PAGES.HOME]: 'styles/home.css'
 }
 
-const WHITELIST = ['ufcgexamples', 'pre.ufcg.edu.br:8443/ControleAcademicoOnline/']
+const WHITELIST = ['ufcgexamples', 'ufcg-examples', 'pre.ufcg.edu.br:8443/ControleAcademicoOnline/']
 browser.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
   const { url } = tab
   const shouldAct = url && WHITELIST.some(allowed => url.includes(allowed)) && changeInfo.status === 'complete'
