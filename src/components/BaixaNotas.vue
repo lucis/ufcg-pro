@@ -14,8 +14,20 @@ export default {
   },
   methods: {
     download() {
-      ufcg.downloadCsv(this.csvContent, 'UFCG_notas.csv')
+      const disciplina = document.getElementById('conteudo').children[2].innerText
+      const nomeDisciplina = this.getNomeDisciplina(disciplina)
+      console.log({ nomeDisciplina })
+      ufcg.downloadCsv(this.csvContent, `${nomeDisciplina}_notas`)
     },
+
+    getNomeDisciplina(disciplina) {
+      const nomeDisciplina = disciplina
+        .split('-')[1]
+        .trim()
+        .split(' ')
+      return nomeDisciplina.join('_').toLowerCase()
+    },
+
     getNotasHeaders() {
       const table = document.querySelector('.table-responsive > table')
       const headers = [...table.querySelectorAll('th')].map(th => th.innerText).filter(h => h.includes('Nota'))
