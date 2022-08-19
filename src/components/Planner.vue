@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-row justify-around bgb ph3 pa2 br4" style="min-height: 260px">
+  <div class="flex flex-row justify-around bgb ph3 pa2 br4" style="min-height: 260px;">
     <div class="w-50">
       <h3 class="text-center">Planeje sua matrícula</h3>
       <p>Selecione na tabela as disciplinas que você planeja se matricular. Quando a matrícula for liberada, <b>você poderá selecionar as disciplinas com apenas um clique.</b></p>
@@ -25,6 +25,13 @@
           <input type="checkbox" id="cursadas" v-on:change="mudou(false, $event)" />
           <label for="cursadas" class="normal">
             Filtrar turmas já cursadas
+          </label>
+        </li>
+
+        <li>
+          <input type="checkbox" id="nao-cursadas" v-on:change="getDisciplinasNaoCursadas($event)" />
+          <label for="nao-cursadas" class="normal">
+            Exibir apenas turmas não cursadas
           </label>
         </li>
         <li>
@@ -66,7 +73,7 @@ export default {
       if (cheias) {
         document.querySelectorAll('tbody tr').forEach(tr => {
           if (!tr.children[4]) return
-          if (parseInt(tr.children[4].innerText.split('/')[0]) === 0) {
+          if (parseInt(tr.children[4].innerText.split('/')[0]) == 0) {
             tr.style.display = checked ? 'none' : ''
           }
         })
@@ -75,11 +82,22 @@ export default {
         document.querySelectorAll('tbody tr').forEach(tr => {
           if (!tr.children[4]) return
           const cod = tr.children[1].innerText.split('-')[0].trim()
-          if (cods.includes(cod)) {
+          if (!cods.includes(cod)) {
             tr.style.display = checked ? 'none' : ''
           }
         })
       }
+    },
+    getDisciplinasNaoCursadas(event) {
+      const { checked } = event.target
+      const cods = this.cursadas.map(({ id }) => id)
+      document.querySelectorAll('tbody tr').forEach(tr => {
+        if (!tr.children[4]) return
+        const cod = tr.children[1].innerText.split('-')[0].trim()
+        if (cods.includes(cod)) {
+          tr.style.display = checked ? 'none' : ''
+        }
+      })
     },
     limpar() {
       localStorage.setItem(ITEM_NAME, null)
