@@ -1,6 +1,6 @@
 <template>
   <div style="display: flex; flex-direction: column; width: 100%;">
-    <SimuladorCRA></SimuladorCRA>
+    <SimuladorCRA />
 
     <div style="align-self: end; margin-top: 40px;">
       <button class="btn btn-primary" v-on:click="exportarHorario()" v-bind:disabled="!this.tableTurmas">
@@ -102,7 +102,7 @@ const irParaAjuda = () => {
 }
 
 export default {
-  name: 'BaixaHorario',
+  name: 'TurmasEmCurso',
   props: ['table'],
   components: {
     SimuladorCRA

@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import BaixaHorario from '../components/BaixaHorario'
+import TurmasEmCurso from '../components/TurmasEmCurso'
 
 Vue.prototype.$browser = global.browser
 
@@ -23,7 +23,7 @@ if (!document.querySelector('#login')) {
   /* eslint-disable no-new */
   const app = new Vue({
     el: '#inject-vue',
-    render: h => h(BaixaHorario)
+    render: h => h(TurmasEmCurso)
   })
 
   window.__VUE_DEVTOOLS_GLOBAL_HOOK__.Vue = app.constructor
