@@ -1,5 +1,12 @@
 <template>
   <div class="bgb ph3 pa2 br4" style="display: flex; flex-direction: column; align-items: center;">
+    <div class="w-40 pt2">
+      <p class="f4">
+        Para fazer uma simulação do seu <b>cra</b> você deve inserir no(s) input(s) abaixo sua possível média final. Em seguida, clique em <b>calcular</b>, então você poderá
+        visualizar quanto será seu <b>cra</b> caso você tire as médias estimadas.
+      </p>
+    </div>
+
     <h3 class="text-center">Simule seu CRA</h3>
 
     <ul style="display: flex; flex-direction: column;">
