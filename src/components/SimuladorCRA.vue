@@ -1,5 +1,5 @@
 <template>
-  <div class="bgb ph3 pa2 br4" style="display: flex; flex-direction: column; align-items: center;">
+  <div class="bgb ph3 pa2 br4 flex flex-column items-center">
     <div class="w-40 pt2">
       <p class="f4">
         Para fazer uma simulação do seu <b>cra</b> você deve inserir no(s) input(s) abaixo sua possível média final. Em seguida, clique em <b>calcular</b>, então você poderá
@@ -9,21 +9,21 @@
 
     <h3 class="text-center">Simule seu CRA</h3>
 
-    <ul style="display: flex; flex-direction: column;">
+    <ul class="flex flex-column">
       <div v-for="(d, index) in this.disciplinas" v-bind:key="d.nome">
-        <li style="display: flex; flex-direction: column;">
-          <div style="display: flex; justify-content: space-between; align-items: center;">
+        <li class="flex flex-column">
+          <div class="flex items-center justify-between">
             <span class="col">{{ d.nome }}</span>
-            <input v-model="disciplinas[index].nota" class="col form-control" placeholder="8.0" style="width: 20%; margin-right: 10px;" />
+            <input v-model="disciplinas[index].nota" class="col form-control w-20 mr3" placeholder="8.0" />
           </div>
         </li>
       </div>
-      <button class="btn btn-primary" style="margin-right: 10px; align-self: end; margin-top: 20px; width: 20%;" v-on:click="simularCRA()">Calcular</button>
+      <button class="btn btn-primary mr3 self-end mt3 w-20-ns" v-on:click="simularCRA()">Calcular</button>
     </ul>
 
-    <div style="margin-left: 10px; margin-top: 20px;">
-      <p style="font-size: 18px; font-weight: bold;">CRA atual: {{ (totalNotasXCreditos / totalCreditos).toFixed(2) }}</p>
-      <p style="font-size: 18px; font-weight: bold;">CRA simulado: {{ craSimulado.toFixed(2) }}</p>
+    <div class="mr1 mt1">
+      <p class="f3 fw9">CRA atual: {{ (totalNotasXCreditos / totalCreditos).toFixed(2) }}</p>
+      <p class="f3 fw9">CRA simulado: {{ craSimulado.toFixed(2) }}</p>
     </div>
   </div>
 </template>
@@ -51,7 +51,6 @@ const getNotasECreditos = async () => {
 
 export default {
   name: 'SimuladorCRA',
-  props: ['table'],
   data() {
     return {
       exibirSimulador: false,
@@ -75,22 +74,6 @@ export default {
     }
   },
   mounted() {
-    if (this.table) {
-      this.tableTurmas = this.table
-    } else {
-      const table = document.querySelector('table')
-      const ths = table && table.querySelectorAll('th')
-      const temTabela = ths && [...ths].some(th => th.innerText.includes('Disciplina'))
-      if (temTabela) {
-        this.tableTurmas = table
-      } else {
-        // TODO: Não funciona pra professores (não sei se precisa)
-        getTableTurmas().then(table => {
-          this.tableTurmas = table
-        })
-      }
-    }
-
     getNotasECreditos().then(cadeiras => {
       const cursadas = cadeiras.filter(c => c.situacao != 'Em Curso')
       this.disciplinas = cadeiras
