@@ -78,7 +78,7 @@ export default {
       table.deleteRow(table.rows.length - 1)
       let cell = table.rows.length
 
-      while ([...table.querySelectorAll('tr')].length - 1 < registros.length) {
+      for (let index = 0; [...table.querySelectorAll('tr')].length - 1 < registros.length; index++) {
         const novaLinha = primeiraLinha.cloneNode(true)
         novaLinha.cells[0].innerText = cell
         tbody.appendChild(novaLinha)
