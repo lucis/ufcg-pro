@@ -33,6 +33,40 @@ const extrairRegistros = csv => {
   return data
 }
 
+const inserirRegistroNaTabela = (registros, table) => {
+  const it = a => a.innerText
+  const grouped = registros.reduce((acc, cur) => ({ ...acc, [cur.aula]: cur }), {})
+  const trs = [...table.querySelectorAll('tr')]
+  let count = 0
+  const nomesCampos = { d: 'data', h: 'horas-aula', a: 'assunto' }
+
+  trs.forEach(tr => {
+    if (count > registros.length) return
+    const aula = it(tr.children[0])
+    const entry = grouped[aula]
+
+    const campos = [...tr.children].map(td => td.children[0]).filter(Boolean)
+
+    campos.forEach((input, i) => {
+      let nomeCampo = nomesCampos[input.name[0]]
+      input.value = entry[nomeCampo]
+    })
+    count++
+  })
+}
+
+const adicionaNovasLinhasNaTabela = (table, tbody, registros) => {
+  const primeiraLinha = table.rows[1]
+  let cell = table.rows.length
+
+  for (let index = 0; [...table.querySelectorAll('tr')].length - 1 < registros.length; index++) {
+    const novaLinha = primeiraLinha.cloneNode(true)
+    novaLinha.cells[0].innerText = cell
+    tbody.appendChild(novaLinha)
+    cell++
+  }
+}
+
 export default {
   name: 'PreencheRegistroDeAulas',
   methods: {
@@ -61,49 +95,19 @@ export default {
     },
     preencher() {
       if (!this.content) return
-      const nomesCampos = { d: 'data', h: 'horas-aula', a: 'assunto' }
 
       const table = document.querySelector('form table')
       const registros = extrairRegistros(this.content)
-
-      const it = a => a.innerText
-      const grouped = registros.reduce((acc, cur) => ({ ...acc, [cur.aula]: cur }), {})
-
-      let trs = [...table.querySelectorAll('tr')]
-
       const tbody = table.getElementsByTagName('tbody')[0]
-      const primeiraLinha = table.rows[1]
       const ultimaLinha = table.rows[table.rows.length - 1]
 
       table.deleteRow(table.rows.length - 1)
-      let cell = table.rows.length
-
-      for (let index = 0; [...table.querySelectorAll('tr')].length - 1 < registros.length; index++) {
-        const novaLinha = primeiraLinha.cloneNode(true)
-        novaLinha.cells[0].innerText = cell
-        tbody.appendChild(novaLinha)
-        cell++
-      }
-
-      trs = [...table.querySelectorAll('tr')]
+      adicionaNovasLinhasNaTabela(table, tbody, registros)
 
       const novaUltinhaLinha = ultimaLinha.cloneNode(true)
       tbody.appendChild(novaUltinhaLinha)
 
-      let count = 0
-      trs.forEach(tr => {
-        if (count > registros.length) return
-        const aula = it(tr.children[0])
-        const entry = grouped[aula]
-
-        const campos = [...tr.children].map(td => td.children[0]).filter(Boolean)
-
-        campos.forEach((input, i) => {
-          let nomeCampo = nomesCampos[input.name[0]]
-          input.value = entry[nomeCampo]
-        })
-        count++
-      })
+      inserirRegistroNaTabela(registros, table)
     }
   },
   data: function() {
