@@ -29,12 +29,6 @@
         </li>
 
         <li>
-          <input type="checkbox" id="nao-cursadas" v-on:change="getDisciplinasNaoCursadas($event)" />
-          <label for="nao-cursadas" class="normal">
-            Exibir apenas turmas não cursadas
-          </label>
-        </li>
-        <li>
           <button class="btn btn-danger btn-sm mt3" v-on:click="limpar()">
             Limpar planejamento atual
           </button>
@@ -73,7 +67,7 @@ export default {
       if (cheias) {
         document.querySelectorAll('tbody tr').forEach(tr => {
           if (!tr.children[4]) return
-          if (parseInt(tr.children[4].innerText.split('/')[0]) == 0) {
+          if (parseInt(tr.children[4].innerText.split('/')[0]) === 0) {
             tr.style.display = checked ? 'none' : ''
           }
         })
@@ -82,22 +76,11 @@ export default {
         document.querySelectorAll('tbody tr').forEach(tr => {
           if (!tr.children[4]) return
           const cod = tr.children[1].innerText.split('-')[0].trim()
-          if (!cods.includes(cod)) {
+          if (cods.includes(cod)) {
             tr.style.display = checked ? 'none' : ''
           }
         })
       }
-    },
-    getDisciplinasNaoCursadas(event) {
-      const { checked } = event.target
-      const cods = this.cursadas.map(({ id }) => id)
-      document.querySelectorAll('tbody tr').forEach(tr => {
-        if (!tr.children[4]) return
-        const cod = tr.children[1].innerText.split('-')[0].trim()
-        if (cods.includes(cod)) {
-          tr.style.display = checked ? 'none' : ''
-        }
-      })
     },
     limpar() {
       localStorage.setItem(ITEM_NAME, null)
