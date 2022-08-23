@@ -22,7 +22,9 @@ const config = {
     'injectors/faltas': './injectors/faltas.js',
     'injectors/curso': './injectors/curso.js',
     'injectors/matricula': './injectors/matricula.js',
-    'injectors/notas_aluno': './injectors/notas_aluno.js'
+    'injectors/notas_aluno': './injectors/notas_aluno.js',
+    'injectors/registro_aulas': './injectors/registro_aulas.js',
+    'injectors/horario_aluno': './injectors/horario_aluno.js'
   },
   output: {
     path: __dirname + '/dist',

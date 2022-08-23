@@ -39,6 +39,15 @@ Segundo os regulamentos da loja do Firefox para addons, extensões que não foca
 3. Siga as mesmas instruções [deste guia](https://github.com/lucis/ufcg-pro/releases/tag/v1.0.5), só que agora selecione a pasta `dist` que foi criada no repositório (se tudo deu certo no passo 2)
 4. Olhe o arquivo `background.js` que você vai ter uma boa ideia de como tudo funciona. Eu uso o Vue.js para criar as interfaces, mas não deve ser difícil usar qualquer outra coisa (só configurar o `webpack.config.js`)
 
+**Desenvolvendo feature para professores**
+
+Para desenvolver features para professores você precisará seguir alguns passos:
+
+1. Clone esse [repositório](https://github.com/lucis/ufcg_examples).
+2. Obtenha os arquivos abaixo da página que você deseja fazer as alterações, você pode pedir ajuda a alguem professor para obter esses arquivos.
+3. Faça um deploy do `UFCG Examples` utilizando alguma ferramenta de sua preferência, caso não conheça nenhuma você pode utilizar o [Vercel](https://vercel.com/docs/cli), é super rápido e fácil.
+4. Adicione a URL onde o projeto foi deployado no array `permissions`, nesse [arquivo](https://github.com/lucis/ufcg-pro/blob/master/src/manifest.json#L19) e no array [WHITELIST](https://github.com/lucis/ufcg-pro/blob/master/src/background.js#L59). Isso fará com que a extensão seja ativada no seu projeto local, assim você poderá testar a feature sem estar logada em uma conta do tipo `professor`.
+
 ## Publicando
 
 1. Após ter aprovado todas as modificações, esteja na branch `master` limpa.

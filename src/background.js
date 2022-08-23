@@ -36,7 +36,9 @@ const PAGES = {
   CURSO: 'AlunoTurmasListar',
   TURMAS: 'ProfessorTurmasListar',
   MATRICULA: 'TODO-PaginaDeMatricula',
-  NOTAS_ALUNO: 'AlunoTurmaNotas'
+  NOTAS_ALUNO: 'AlunoTurmaNotas',
+  REGISTRO_AULAS: 'ProfessorTurmaAulasEditar',
+  HORARIO_ALUNO: 'AlunoHorarioConfirmar'
 }
 
 const injectorsMap = {
@@ -49,7 +51,9 @@ const injectorsMap = {
   [PAGES.CURSO]: 'injectors/curso.js',
   [PAGES.TURMAS]: 'injectors/curso.js',
   [PAGES.MATRICULA]: 'injectors/matricula.js',
-  [PAGES.NOTAS_ALUNO]: 'injectors/notas_aluno.js'
+  [PAGES.NOTAS_ALUNO]: 'injectors/notas_aluno.js',
+  [PAGES.REGISTRO_AULAS]: 'injectors/registro_aulas.js',
+  [PAGES.HORARIO_ALUNO]: 'injectors/horario_aluno.js'
 }
 
 const cssMap = {

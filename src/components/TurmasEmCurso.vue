@@ -1,11 +1,18 @@
 <template>
-  <button class="btn btn-primary" v-on:click="exportarHorario()" v-bind:disabled="!this.tableTurmas">
-    Exportar Horário
-    <span class="glyphicon glyphicon-circle-arrow-down"></span>
-  </button>
+  <div style="display: flex; flex-direction: column; width: 100%;">
+    <SimuladorCRA />
+
+    <div style="align-self: end; margin-top: 40px;">
+      <button class="btn btn-primary" v-on:click="exportarHorario()" v-bind:disabled="!this.tableTurmas">
+        Exportar Horário
+        <span class="glyphicon glyphicon-circle-arrow-down"></span>
+      </button>
+    </div>
+  </div>
 </template>
 
 <script>
+import SimuladorCRA from './SimuladorCRA'
 // Extraído de https://stackoverflow.com/a/54437356/6732300
 const getProximoDiaDaSemana = (dayNumber, excludeToday = true, refDate = new Date()) => {
   const dayMap = {
@@ -93,9 +100,13 @@ const irParaAjuda = () => {
   const win = window.open('https://gist.github.com/lucis/1243ac0bd195647141c7d7f5d3f2691a', '_blank')
   win.focus()
 }
+
 export default {
-  name: 'BaixaHorario',
+  name: 'TurmasEmCurso',
   props: ['table'],
+  components: {
+    SimuladorCRA
+  },
   data() {
     return {
       turmas: [],
