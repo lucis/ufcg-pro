@@ -151,17 +151,13 @@ export default {
       })
     },
     buildTabelaHorario() {
-      const headers = ['', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado']
+      const headers = ['', 'Segunda-Feira', 'Terça-Feira', 'Quarta-Feira', 'Quinta-Feira', 'Sexta-Feira', 'Sábado']
       const weekday = [2, 3, 4, 5, 6, 7]
 
       const horarioDisciplinas = getMapaHorarioDisciplinas()
       const hourRanges = getIntervalos()
 
-      const thead = `<thead><tr>${headers
-        .map(h => {
-          return `<th>${h}${h && h !== 'Sábado' ? '-Feira' : ''}</th>`
-        })
-        .join('')}</tr></thead>`
+      const thead = `<thead><tr>${headers.map(h => `<th>${h}</th>`).join('')}</tr></thead>`
 
       const tbody = `<tbody>${hourRanges
         .map(hourRange => {
