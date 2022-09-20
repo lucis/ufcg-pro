@@ -3,4 +3,5 @@
 /dist
 /dist-zip
 
+.idea/
 .vercel
